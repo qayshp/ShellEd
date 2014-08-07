@@ -117,12 +117,6 @@ ScriptSourceViewerConfiguration {
 	}
 
 	@Override
-	public String[] getIndentPrefixes(ISourceViewer sourceViewer,
-			String contentType) {
-		return new String[] { "\t", "        " };
-	}
-
-	@Override
 	protected IInformationControlCreator getOutlinePresenterControlCreator(
 			ISourceViewer sourceViewer, final String commandId) {
 		return new IInformationControlCreator() {
