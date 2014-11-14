@@ -17,17 +17,17 @@ import org.eclipse.dltk.ast.declarations.FieldDeclaration;
 import org.eclipse.dltk.ast.declarations.MethodDeclaration;
 
 public class ShellModel {
-	
+
 	private List<MethodDeclaration> functions;
 	private List<FieldDeclaration> variables;
 	private List<MethodDeclaration> statements;
-	
+
 	public ShellModel() {
-		functions = new ArrayList<MethodDeclaration>();
-		variables = new ArrayList<FieldDeclaration>();
-		statements = new ArrayList<MethodDeclaration>();
+		functions = new ArrayList<>();
+		variables = new ArrayList<>();
+		statements = new ArrayList<>();
 	}
-	
+
 	public void addFunction(MethodDeclaration funtion) {
 		functions.add(funtion);
 	}
@@ -35,7 +35,7 @@ public class ShellModel {
 	public List<MethodDeclaration> getFunctions() {
 		return functions;
 	}
-	
+
 	public void addVariable(FieldDeclaration variable) {
 		variables.add(variable);
 	}

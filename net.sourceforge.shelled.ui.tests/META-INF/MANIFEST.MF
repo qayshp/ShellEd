@@ -5,5 +5,5 @@ Bundle-SymbolicName: net.sourceforge.shelled.ui.tests
 Bundle-Version: 2.0.4.qualifier
 Require-Bundle: org.junit;bundle-version="4.10.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Fragment-Host: net.sourceforge.shelled.ui

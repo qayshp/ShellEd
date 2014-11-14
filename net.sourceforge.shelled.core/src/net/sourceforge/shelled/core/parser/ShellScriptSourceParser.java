@@ -40,10 +40,10 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 		String line;
 		int lineStart = 0;
 		int commentLength = 0;
-		Set<String> functionNames = new HashSet<String>();
-		Set<String> varNames = new HashSet<String>();
+		Set<String> functionNames = new HashSet<>();
+		Set<String> varNames = new HashSet<>();
 		MethodDeclaration mDeclaration = null;
-		Stack<Declaration> tmp = new Stack<Declaration>();
+		Stack<Declaration> tmp = new Stack<>();
 		boolean isPrevLnContinued = false;
 
 		try {

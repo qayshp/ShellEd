@@ -25,8 +25,8 @@ public class ShellModuleDeclaration extends ModuleDeclaration {
 
 	public ShellModuleDeclaration(int sourceLength) {
 		super(sourceLength);
-		functionsInfo = new ArrayList<FunctionInfo>();
-		variablesInfo = new ArrayList<FieldInfo>();
+		functionsInfo = new ArrayList<>();
+		variablesInfo = new ArrayList<>();
 	}
 
 	public void setFunctions(List<MethodDeclaration> functions) {
