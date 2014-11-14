@@ -10,8 +10,6 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.interpreter;
 
-import java.io.IOException;
-
 import net.sourceforge.shelled.core.ShelledNature;
 import net.sourceforge.shelled.ui.Activator;
 
@@ -27,10 +25,10 @@ import org.eclipse.dltk.launching.LibraryLocation;
 
 public class ShellScriptInstallType extends AbstractInterpreterInstallType {
 	private static final String[] INTERPRETER_NAMES = { "sh", "bash", "zsh",
-			"dash", "ksh", "tcsh", "csh" };
+		"dash", "ksh", "tcsh", "csh" };
 
 	@Override
-	protected IPath createPathFile(IDeployment deployment) throws IOException {
+	protected IPath createPathFile(IDeployment deployment) {
 		return null;
 	}
 

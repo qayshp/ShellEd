@@ -30,7 +30,7 @@ public class RemoveNature extends AbstractProjectHandler {
 			String[] natures = description.getNatureIds();
 
 			// Filter the nature out of the list
-			List<String> newNatures = new ArrayList<String>();
+			List<String> newNatures = new ArrayList<>();
 			for (String nature : natures) {
 				if (!ShelledNature.SHELLED_NATURE.equals(nature)) {
 					newNatures.add(nature);
@@ -38,7 +38,8 @@ public class RemoveNature extends AbstractProjectHandler {
 			}
 
 			// Set the project description
-			description.setNatureIds(newNatures.toArray(new String[newNatures.size()]));
+			description.setNatureIds(newNatures.toArray(new String[newNatures
+					.size()]));
 			project.setDescription(description, null);
 		} catch (CoreException e) {
 			e.printStackTrace();

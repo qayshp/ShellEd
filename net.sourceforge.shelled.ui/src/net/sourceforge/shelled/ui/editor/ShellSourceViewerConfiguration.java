@@ -54,7 +54,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.texteditor.ITextEditor;
 
 public class ShellSourceViewerConfiguration extends
-		ScriptSourceViewerConfiguration {
+ScriptSourceViewerConfiguration {
 
 	private static IRule getKeywords(IToken keywordToken, final String[] words,
 			IToken defaultToken) {
@@ -97,12 +97,12 @@ public class ShellSourceViewerConfiguration extends
 			ISourceViewer sourceViewer, String contentType) {
 		ScriptAutoIndentStrategy strategy = new ScriptAutoIndentStrategy();
 
-		ArrayList<IRule> rules = new ArrayList<IRule>();
+		ArrayList<IRule> rules = new ArrayList<>();
 		rules.add(new WhitespaceRule(new WhitespaceDetector()));
 		rules.add(getKeywords(new Token(IndentType.INCREMENT), new String[] {
-				"do", "case", "{", "then" }, Token.UNDEFINED));
+			"do", "case", "{", "then" }, Token.UNDEFINED));
 		rules.add(getKeywords(new Token(IndentType.DECREMENT), new String[] {
-				"done", "esac", "}", "fi" }, Token.UNDEFINED));
+			"done", "esac", "}", "fi" }, Token.UNDEFINED));
 		rules.add(getKeywords(new Token(IndentType.INFLEXION),
 				new String[] { "else" }, Token.UNDEFINED));
 
@@ -132,7 +132,7 @@ public class ShellSourceViewerConfiguration extends
 				int treeStyle = SWT.V_SCROLL | SWT.H_SCROLL;
 				return new ScriptOutlineInformationControl(parent, shellStyle,
 						treeStyle, commandId, Activator.getDefault()
-								.getPreferenceStore());
+						.getPreferenceStore());
 			}
 		};
 	}

@@ -28,4 +28,4 @@ public class AssignmentDetector implements IWordDetector {
 		return Character.isJavaIdentifierStart(c);
 	}
 
-};
+}

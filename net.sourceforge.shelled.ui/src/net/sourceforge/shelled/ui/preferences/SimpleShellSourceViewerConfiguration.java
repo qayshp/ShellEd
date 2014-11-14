@@ -25,7 +25,7 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.ui.texteditor.ITextEditor;
 
 public class SimpleShellSourceViewerConfiguration extends
-		ShellSourceViewerConfiguration {
+ShellSourceViewerConfiguration {
 
 	private final boolean changeFormatter;
 
@@ -93,11 +93,6 @@ public class SimpleShellSourceViewerConfiguration extends
 
 	@Override
 	public IInformationPresenter getOutlinePresenter(
-			ISourceViewer sourceViewer, boolean doCodeResolve) {
-		return null;
-	}
-
-	public IInformationPresenter getHierarchyPresenter(
 			ISourceViewer sourceViewer, boolean doCodeResolve) {
 		return null;
 	}

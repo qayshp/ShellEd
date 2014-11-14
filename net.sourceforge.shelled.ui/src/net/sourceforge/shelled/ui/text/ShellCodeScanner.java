@@ -65,7 +65,7 @@ public class ShellCodeScanner extends AbstractScriptScanner {
 
 	public static List<String> getCommands() {
 		String path = System.getenv("PATH");
-		List<String> commands = new ArrayList<String>();
+		List<String> commands = new ArrayList<>();
 		String[] pathEntries = path.split(System.getProperty("path.separator"));
 		for (String pathEntry : pathEntries) {
 			File dir = new File(pathEntry);
@@ -102,7 +102,7 @@ public class ShellCodeScanner extends AbstractScriptScanner {
 
 	@Override
 	protected List<IRule> createRules() {
-		List<IRule> rules = new ArrayList<IRule>();
+		List<IRule> rules = new ArrayList<>();
 		IToken keyword = this.getToken(IShellColorConstants.SHELL_KEYWORD);
 		IToken commandToken = this.getToken(IShellColorConstants.SHELL_COMMAND);
 		IToken other = this.getToken(IShellColorConstants.SHELL_DEFAULT);

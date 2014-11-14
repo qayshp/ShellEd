@@ -11,7 +11,6 @@ import java.util.Iterator;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -25,7 +24,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public abstract class AbstractProjectHandler extends AbstractHandler {
 
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public Object execute(ExecutionEvent event) {
 		IStructuredSelection selection = (IStructuredSelection) HandlerUtil
 				.getCurrentSelection(event);
 		Iterator<?> iterator = selection.iterator();
@@ -49,7 +48,7 @@ public abstract class AbstractProjectHandler extends AbstractHandler {
 	 * To be implemented by sub-classes to perform actions on a project. This
 	 * will be called once for every project resource that is currently
 	 * selected.
-	 * 
+	 *
 	 * @param project
 	 *            a project resource for manipulation
 	 */

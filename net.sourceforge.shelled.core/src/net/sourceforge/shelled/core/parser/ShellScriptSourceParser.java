@@ -32,7 +32,7 @@ import org.eclipse.dltk.compiler.problem.IProblemReporter;
 
 public class ShellScriptSourceParser extends AbstractSourceParser {
 
-	private ShellModel parse(StringReader reader,
+	private static ShellModel parse(StringReader reader,
 			ShellModuleDeclaration moduleDeclaration) {
 		ShellModel model = new ShellModel();
 
@@ -234,14 +234,14 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 		return model;
 	}
 
-	private boolean isValidName(String varName) {
+	private static boolean isValidName(String varName) {
 		if (varName.matches("\\w+")) {
 			return true;
 		}
 		return false;
 	}
 
-	private void processNode(ShellModel parse,
+	private static void processNode(ShellModel parse,
 			ModuleDeclaration moduleDeclaration) {
 		for (MethodDeclaration functionNode : parse.getFunctions()) {
 			moduleDeclaration.addStatement(functionNode);

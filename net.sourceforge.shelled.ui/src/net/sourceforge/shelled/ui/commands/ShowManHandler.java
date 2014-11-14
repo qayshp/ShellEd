@@ -12,7 +12,6 @@ package net.sourceforge.shelled.ui.commands;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.text.TextSelection;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.linuxtools.man.views.ManView;
@@ -26,7 +25,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public class ShowManHandler extends AbstractHandler {
 
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public Object execute(ExecutionEvent event) {
 		try {
 			ISelection selection = HandlerUtil.getActiveEditor(event)
 					.getEditorSite().getSelectionProvider().getSelection();

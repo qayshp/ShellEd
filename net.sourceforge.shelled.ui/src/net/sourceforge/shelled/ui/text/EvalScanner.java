@@ -30,7 +30,8 @@ public class EvalScanner extends AbstractScriptScanner {
 	 * this scanner.
 	 */
 	private static String fgTokenProperties[] = new String[] {
-			IShellColorConstants.SHELL_EVAL, IShellColorConstants.SHELL_VARIABLE };
+		IShellColorConstants.SHELL_EVAL,
+			IShellColorConstants.SHELL_VARIABLE };
 
 	public EvalScanner(IColorManager manager, IPreferenceStore store) {
 		super(manager, store);
@@ -39,7 +40,7 @@ public class EvalScanner extends AbstractScriptScanner {
 
 	@Override
 	protected List<IRule> createRules() {
-		List<IRule> rules = new ArrayList<IRule>();
+		List<IRule> rules = new ArrayList<>();
 
 		// Token types used in the rules
 		IToken defaultToken = this.getToken(IShellColorConstants.SHELL_EVAL);

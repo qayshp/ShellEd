@@ -36,7 +36,7 @@ public class ShelledSelectionEngine extends ScriptSelectionEngine {
 		sourceModule = (ISourceModule) module.getModelElement();
 		ModuleDeclaration moduleDeclaration = SourceParserUtil
 				.getModuleDeclaration(sourceModule, null);
-		final List<IModelElement> results = new ArrayList<IModelElement>();
+		final List<IModelElement> results = new ArrayList<>();
 		try {
 			moduleDeclaration.traverse(new ASTVisitor() {
 				@Override

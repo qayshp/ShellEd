@@ -26,7 +26,7 @@ import org.eclipse.jface.text.rules.IToken;
 /**
  * An indent strategy capable of indenting and unindenting on any set of words,
  * depending on the rules that are set.
- * 
+ *
  * @see #setRules(IRule[])
  */
 public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
@@ -39,7 +39,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 * Set the rules that will be used in a document scanner to identify where
 	 * indentations should occur. Typically you'd have one rule to describe each
 	 * type of indentation.
-	 * 
+	 *
 	 * @param rules
 	 *            the list of rules
 	 * @see IndentType
@@ -67,7 +67,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 * indent will either be the same as the previous line or incremented if the
 	 * user has hit carriage return on a line that contains a incrementing
 	 * keyword.
-	 * 
+	 *
 	 * @param document
 	 *            the document being parsed
 	 * @param c
@@ -94,7 +94,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	/**
 	 * Set the indent of the current line when the user hits a key. The indent
 	 * will either be unchanged or decremented if the user types
-	 * 
+	 *
 	 * @param document
 	 *            the document being parsed
 	 * @param c
@@ -130,7 +130,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 * Returns the first offset greater than <code>offset</code> and smaller
 	 * than <code>end</code> whose character is not a space or tab character. If
 	 * no such offset is found, <code>end</code> is returned.
-	 * 
+	 *
 	 * @param document
 	 *            the document to search in
 	 * @param offset
@@ -142,8 +142,8 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 * @exception BadLocationException
 	 *                if offset is an invalid position in the given document
 	 */
-	private int findEndOfWhiteSpace(IDocument document, int offset, int end)
-			throws BadLocationException {
+	private static int findEndOfWhiteSpace(IDocument document, int offset,
+			int end) throws BadLocationException {
 		while (offset < end) {
 			char c = document.getChar(offset);
 			if ((c != ' ') && (c != '\t')) {
@@ -156,14 +156,14 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 
 	/**
 	 * Returns the indentation of the specified line in <code>document</code>.
-	 * 
+	 *
 	 * @param document
 	 *            - the document being parsed
 	 * @param line
 	 *            - the line number being searched
 	 * @return the string containing the indentation from the specified line
 	 */
-	private String getIndentOfLine(IDocument document, int line)
+	private static String getIndentOfLine(IDocument document, int line)
 			throws BadLocationException {
 		if (line > -1) {
 			int start = document.getLineOffset(line);
@@ -179,7 +179,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 * Returns the bracket count of a section of text. The count is incremented
 	 * when an opening bracket is encountered and decremented when a closing
 	 * bracket is encountered.
-	 * 
+	 *
 	 * @param document
 	 *            - the document being parsed
 	 * @param command
@@ -226,14 +226,14 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	/**
 	 * Calculate the indentation needed for a new line based on the contents of
 	 * the previous line.
-	 * 
+	 *
 	 * @param previous
 	 *            a string containing the indentation of the previous line
 	 * @param additional
 	 *            number of desired addition indentations, may be negative
 	 * @return a string containing the indentation to use on the new line
 	 */
-	private String generateIndentation(String previous, int additional) {
+	private static String generateIndentation(String previous, int additional) {
 		// Get the indentation preferences
 		IPreferenceStore prefs = Activator.getDefault().getPreferenceStore();
 		String tabChar = prefs
@@ -288,14 +288,14 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	/**
 	 * Computes the length of a an indentation, counting a tab character as the
 	 * size until the next tab stop and every other character as one.
-	 * 
+	 *
 	 * @param indent
 	 *            the string containing the indentation to measure
 	 * @param tabSize
 	 *            the visual size of tab characters
 	 * @return the visual length in number of characters
 	 */
-	private int computeVisualLength(String indent, int tabSize) {
+	private static int computeVisualLength(String indent, int tabSize) {
 		int length = 0;
 		for (int i = 0; i < indent.length(); i++) {
 			char ch = indent.charAt(i);
@@ -317,7 +317,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	/**
 	 * Strips any characters off the end of an indentation that exceed a
 	 * specified maximum visual indentation length.
-	 * 
+	 *
 	 * @param indent
 	 *            the string containing the indentation to measure
 	 * @param max
@@ -326,7 +326,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 *            the visual size of tab characters
 	 * @return a string containing the stripped indentation
 	 */
-	private String stripExtraChars(String indent, int max, int tabSize) {
+	private static String stripExtraChars(String indent, int max, int tabSize) {
 		int measured = 0;
 		int i = 0;
 		for (; (measured < max) && (i < indent.length()); i++) {

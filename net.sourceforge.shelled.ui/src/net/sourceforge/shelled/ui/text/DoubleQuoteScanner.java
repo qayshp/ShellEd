@@ -34,8 +34,9 @@ public class DoubleQuoteScanner extends AbstractScriptScanner {
 	 * this scanner.
 	 */
 	private static String fgTokenProperties[] = new String[] {
-			IShellColorConstants.SHELL_EVAL, IShellColorConstants.SHELL_DOUBLE_QUOTE,
-			IShellColorConstants.SHELL_VARIABLE };
+		IShellColorConstants.SHELL_EVAL,
+			IShellColorConstants.SHELL_DOUBLE_QUOTE,
+		IShellColorConstants.SHELL_VARIABLE };
 
 	public DoubleQuoteScanner(IColorManager manager, IPreferenceStore store) {
 		super(manager, store);
@@ -44,10 +45,11 @@ public class DoubleQuoteScanner extends AbstractScriptScanner {
 
 	@Override
 	protected List<IRule> createRules() {
-		List<IRule> rules = new ArrayList<IRule>();
+		List<IRule> rules = new ArrayList<>();
 
 		// Token types used in the rules
-		IToken defaultToken = this.getToken(IShellColorConstants.SHELL_DOUBLE_QUOTE);
+		IToken defaultToken = this
+				.getToken(IShellColorConstants.SHELL_DOUBLE_QUOTE);
 		IToken evalToken = this.getToken(IShellColorConstants.SHELL_EVAL);
 		IToken varToken = this.getToken(IShellColorConstants.SHELL_VARIABLE);
 

@@ -26,7 +26,7 @@ public class ShellPartitionScanner extends RuleBasedPartitionScanner {
 	public ShellPartitionScanner() {
 		super();
 
-		List<IRule> rules = new ArrayList<IRule>();
+		List<IRule> rules = new ArrayList<>();
 		// Add rule for single line comments.
 		rules.add(new EndOfLineRule("#!", new Token(
 				IShellPartitions.HASHBANG_CONTENT_TYPE)));
@@ -54,14 +54,10 @@ public class ShellPartitionScanner extends RuleBasedPartitionScanner {
 				IShellPartitions.PARAM_CONTENT_TYPE), '\\'));
 		rules.add(new SingleLineRule("`", "`", new Token(
 				IShellPartitions.EVAL_CONTENT_TYPE), '\\', false, true));
-		rules
-				.add(new SingleLineRule("\"", "\"", new Token(
-						IShellPartitions.DOUBLE_QUOTE_CONTENT_TYPE), '\\',
-						false, true));
-		rules
-				.add(new SingleLineRule("'", "'", new Token(
-						IShellPartitions.SINGLE_QUOTE_CONTENT_TYPE), '\\',
-						false, true));
+		rules.add(new SingleLineRule("\"", "\"", new Token(
+				IShellPartitions.DOUBLE_QUOTE_CONTENT_TYPE), '\\', false, true));
+		rules.add(new SingleLineRule("'", "'", new Token(
+				IShellPartitions.SINGLE_QUOTE_CONTENT_TYPE), '\\', false, true));
 
 		IPredicateRule[] result = new IPredicateRule[rules.size()];
 		rules.toArray(result);
