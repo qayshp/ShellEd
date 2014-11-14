@@ -60,6 +60,11 @@
 
 	<repositories>
 		<repository>
+			<id>license</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/cbi/updates/license/</url>
+		</repository>
+		<repository>
 			<id>platform</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/luna</url>

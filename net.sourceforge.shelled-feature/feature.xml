@@ -2,14 +2,21 @@
 <feature
       id="net.sourceforge.shelled"
       label="ShellEd"
-      version="2.0.4.qualifier">
+      version="2.0.4.qualifier"
+      provider-name="ShellEd Project"
+      license-feature="org.eclipse.license"
+      license-feature-version="0.0.0">
 
-   <description url="https://sourceforge.net/apps/trac/shelled/">
-      Shell Script Editor for Eclipse
+   <description>
+      %description
    </description>
 
-   <license url="http://www.eclipse.org/legal/epl-v10.html">
-      Eclipse Public License
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
    </license>
 
    <url>
@@ -36,6 +43,7 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
    <plugin
          id="org.eclipse.linuxtools.man.core"
          download-size="0"
