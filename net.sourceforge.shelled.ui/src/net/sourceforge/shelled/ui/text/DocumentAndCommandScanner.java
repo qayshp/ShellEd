@@ -20,7 +20,7 @@ import org.eclipse.jface.text.rules.RuleBasedScanner;
  * read DocumentCommands as well as IDocuments. This ability is toggled on or
  * off depending on whether setRange(document,offset,length) (off) or
  * setRange(document,documentCommand,offset,length) (on) was called.
- * 
+ *
  * @author Doug Satchwell
  * @version $Id: DocumentAndCommandScanner.java,v 1.2 2008/12/02 21:59:55
  *          akurtakov Exp $
@@ -28,9 +28,6 @@ import org.eclipse.jface.text.rules.RuleBasedScanner;
 public class DocumentAndCommandScanner extends RuleBasedScanner {
 	private DocumentCommand fDocumentCommand;
 
-	/*
-	 * @see ICharacterScanner#read()
-	 */
 	@Override
 	public int read() {
 		try {
@@ -41,9 +38,9 @@ public class DocumentAndCommandScanner extends RuleBasedScanner {
 				}
 			}
 			if ((fDocumentCommand != null)
-					&& (fOffset < fRangeEnd + fDocumentCommand.text.length())) {
-				return fDocumentCommand.text.charAt((fRangeEnd
-						+ fDocumentCommand.text.length() - fOffset) - 1);
+					&& (fOffset < (fRangeEnd + fDocumentCommand.text.length()))) {
+				return fDocumentCommand.text
+						.charAt(((fRangeEnd + fDocumentCommand.text.length()) - fOffset) - 1);
 			}
 			return EOF;
 		} finally {

@@ -49,7 +49,7 @@ public class DollarRule implements IRule {
 	 * '0' - usually the name of the file used to invoke the shell<br>
 	 * '1' to '9' - expands to the corresponding positional parameters,
 	 * parameters 10+ must be referenced with braces like ${12}
-	 * 
+	 *
 	 * @param c
 	 *            a character to test
 	 * @return true if the specified character is a special parameter
@@ -57,16 +57,9 @@ public class DollarRule implements IRule {
 	protected boolean isSpecial(char c) {
 		return ((c == '*') || (c == '@') || (c == '#') || (c == '?')
 				|| (c == '-') || (c == '$') || (c == '!') || (c == '_') || Character
-				.isDigit(c));
+					.isDigit(c));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.jface.text.rules.IRule#evaluate(org.eclipse.jface.text.rules
-	 * .ICharacterScanner)
-	 */
 	@Override
 	public IToken evaluate(ICharacterScanner scanner) {
 		int c = scanner.read();
@@ -92,7 +85,7 @@ public class DollarRule implements IRule {
 
 	/**
 	 * Returns the characters in the buffer to the scanner.
-	 * 
+	 *
 	 * @param scanner
 	 *            the scanner to be used
 	 */
