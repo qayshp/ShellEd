@@ -17,6 +17,7 @@ import org.junit.Before;
 /**
  * Common base class for rules-based scanner tests.
  */
+@SuppressWarnings("restriction")
 public abstract class AbstractScannerTester {
 
 	protected IColorManager cm = new DLTKColorManager();
