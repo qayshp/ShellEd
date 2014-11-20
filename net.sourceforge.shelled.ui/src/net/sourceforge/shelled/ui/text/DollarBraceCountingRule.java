@@ -32,14 +32,14 @@ public class DollarBraceCountingRule extends PatternRule {
 	 * braces are detected the rule will return the specified token.
 	 * Alternatively, the sequence can also be ended by the end of the line. Any
 	 * character which follows the given escapeCharacter will be ignored.
-	 * 
+	 *
 	 * @param openingBrace
 	 *            the pattern's start sequence
 	 * @param closingBrace
 	 *            the pattern's end sequence, <code>null</code> is a legal value
 	 * @param token
 	 *            the token which will be returned on success
-	 * @param escapeCharacter
+	 * @param escapeChar
 	 *            any character following this one will be ignored
 	 */
 	public DollarBraceCountingRule(char openingBrace, char closingBrace,
@@ -56,7 +56,7 @@ public class DollarBraceCountingRule extends PatternRule {
 	 * sequence, it counts occurrences of braces and returns successfully when
 	 * the number of closing braces encountered equals the number of opening
 	 * braces.
-	 * 
+	 *
 	 * @see org.eclipse.jface.text.rules.PatternRule#endSequenceDetected(org.eclipse.jface.text.rules.ICharacterScanner)
 	 */
 	@Override
