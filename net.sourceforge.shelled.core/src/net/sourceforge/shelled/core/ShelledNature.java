@@ -14,6 +14,6 @@ import org.eclipse.dltk.core.ScriptNature;
 
 public class ShelledNature extends ScriptNature {
 
-	public static final String SHELLED_NATURE = Activator.PLUGIN_ID + ".nature";
+	public static final String SHELLED_NATURE = "net.sourceforge.shelled.core.nature";
 
 }
