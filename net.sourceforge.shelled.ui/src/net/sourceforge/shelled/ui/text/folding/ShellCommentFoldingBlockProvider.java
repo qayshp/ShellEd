@@ -10,14 +10,13 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.text.folding;
 
-import net.sourceforge.shelled.ui.Activator;
-import net.sourceforge.shelled.ui.text.IShellPartitions;
-
 import org.eclipse.dltk.ui.text.folding.IFoldingContent;
 import org.eclipse.dltk.ui.text.folding.PartitioningFoldingBlockProvider;
 
-public class ShellCommentFoldingBlockProvider extends
-		PartitioningFoldingBlockProvider {
+import net.sourceforge.shelled.ui.Activator;
+import net.sourceforge.shelled.ui.text.IShellPartitions;
+
+public class ShellCommentFoldingBlockProvider extends PartitioningFoldingBlockProvider {
 
 	public ShellCommentFoldingBlockProvider() {
 		super(Activator.getDefault().getTextTools());
@@ -26,9 +25,8 @@ public class ShellCommentFoldingBlockProvider extends
 	@Override
 	public void computeFoldableBlocks(IFoldingContent content) {
 		if (isFoldingComments()) {
-			computeBlocksForPartitionType(content,
-					IShellPartitions.COMMENT_CONTENT_TYPE,
-					FoldingBlockKind.COMMENT, isCollapseComments());
+			computeBlocksForPartitionType(content, IShellPartitions.COMMENT_CONTENT_TYPE, FoldingBlockKind.COMMENT,
+					isCollapseComments());
 		}
 	}
 

@@ -33,12 +33,9 @@ public class ShellCodeFoldingBlockProvider extends ModelFoldingBlockProvider {
 	@Override
 	public void initializePreferences(IPreferenceStore preferenceStore) {
 		super.initializePreferences(preferenceStore);
-		minimalLineCount = preferenceStore
-				.getInt(PreferenceConstants.EDITOR_FOLDING_LINES_LIMIT);
-		foldingEnabled = preferenceStore
-				.getBoolean(PreferenceConstants.EDITOR_FOLDING_ENABLED);
-		functionsCollapsedInitially = preferenceStore
-				.getBoolean(PreferenceConstants.EDITOR_FOLDING_INIT_METHODS);
+		minimalLineCount = preferenceStore.getInt(PreferenceConstants.EDITOR_FOLDING_LINES_LIMIT);
+		foldingEnabled = preferenceStore.getBoolean(PreferenceConstants.EDITOR_FOLDING_ENABLED);
+		functionsCollapsedInitially = preferenceStore.getBoolean(PreferenceConstants.EDITOR_FOLDING_INIT_METHODS);
 	}
 
 	@Override

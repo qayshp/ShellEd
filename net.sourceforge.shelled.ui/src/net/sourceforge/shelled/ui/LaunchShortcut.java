@@ -10,17 +10,16 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui;
 
-import net.sourceforge.shelled.core.ShelledNature;
-
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.dltk.internal.debug.ui.launcher.AbstractScriptLaunchShortcut;
+
+import net.sourceforge.shelled.core.ShelledNature;
 
 public class LaunchShortcut extends AbstractScriptLaunchShortcut {
 
 	@Override
 	protected ILaunchConfigurationType getConfigurationType() {
-		return getLaunchManager().getLaunchConfigurationType(
-				"net.sourceforge.shelled.ui.launchConfigurationType1");
+		return getLaunchManager().getLaunchConfigurationType("net.sourceforge.shelled.ui.launchConfigurationType1");
 	}
 
 	@Override

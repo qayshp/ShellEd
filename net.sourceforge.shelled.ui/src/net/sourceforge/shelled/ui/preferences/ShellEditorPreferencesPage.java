@@ -10,12 +10,12 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.preferences;
 
-import net.sourceforge.shelled.ui.Activator;
-
 import org.eclipse.dltk.ui.preferences.AbstractConfigurationBlockPreferencePage;
 import org.eclipse.dltk.ui.preferences.EditorConfigurationBlock;
 import org.eclipse.dltk.ui.preferences.IPreferenceConfigurationBlock;
 import org.eclipse.dltk.ui.preferences.OverlayPreferenceStore;
+
+import net.sourceforge.shelled.ui.Activator;
 
 public class ShellEditorPreferencesPage extends AbstractConfigurationBlockPreferencePage {
 
@@ -35,8 +35,7 @@ public class ShellEditorPreferencesPage extends AbstractConfigurationBlockPrefer
 	}
 
 	@Override
-	protected IPreferenceConfigurationBlock createConfigurationBlock(
-			OverlayPreferenceStore overlayPreferenceStore) {
+	protected IPreferenceConfigurationBlock createConfigurationBlock(OverlayPreferenceStore overlayPreferenceStore) {
 		return new EditorConfigurationBlock(this, overlayPreferenceStore);
 	}
 }

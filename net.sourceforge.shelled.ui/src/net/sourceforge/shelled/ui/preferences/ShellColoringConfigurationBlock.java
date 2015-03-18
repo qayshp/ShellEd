@@ -12,11 +12,6 @@ package net.sourceforge.shelled.ui.preferences;
 
 import java.io.InputStream;
 
-import net.sourceforge.shelled.ui.Activator;
-import net.sourceforge.shelled.ui.IShellColorConstants;
-import net.sourceforge.shelled.ui.editor.ShellDocumentSetupParticipant;
-import net.sourceforge.shelled.ui.text.IShellPartitions;
-
 import org.eclipse.dltk.internal.ui.editor.ScriptSourceViewer;
 import org.eclipse.dltk.ui.preferences.AbstractScriptEditorColoringConfigurationBlock;
 import org.eclipse.dltk.ui.preferences.OverlayPreferenceStore;
@@ -31,30 +26,30 @@ import org.eclipse.jface.text.source.projection.ProjectionViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-public class ShellColoringConfigurationBlock extends
-		AbstractScriptEditorColoringConfigurationBlock {
+import net.sourceforge.shelled.ui.Activator;
+import net.sourceforge.shelled.ui.IShellColorConstants;
+import net.sourceforge.shelled.ui.editor.ShellDocumentSetupParticipant;
+import net.sourceforge.shelled.ui.text.IShellPartitions;
+
+public class ShellColoringConfigurationBlock extends AbstractScriptEditorColoringConfigurationBlock {
 
 	private static final String PREVIEW_FILE_NAME = "PreviewFile.txt"; //$NON-NLS-1$
 
 	private static final String[][] fSyntaxColorListModel = new String[][] {
-			{ "Comments", IShellColorConstants.SHELL_COMMENT, sCommentsCategory },
-			{ "Hashbang", IShellColorConstants.SHELL_HASHBANG,
-					sCommentsCategory },
-			{ "TODO tags", IShellColorConstants.SHELL_TODO_TAG,
-					sCommentsCategory },
+		{ "Comments", IShellColorConstants.SHELL_COMMENT, sCommentsCategory },
+		{ "Hashbang", IShellColorConstants.SHELL_HASHBANG, sCommentsCategory },
+		{ "TODO tags", IShellColorConstants.SHELL_TODO_TAG, sCommentsCategory },
 
-			{ "Eval", IShellColorConstants.SHELL_EVAL, sCoreCategory },
-			{ "Double quoted text", IShellColorConstants.SHELL_DOUBLE_QUOTE,
-					sCoreCategory },
-			{ "Function", IShellColorConstants.SHELL_FUNCTION, sCoreCategory },
+		{ "Eval", IShellColorConstants.SHELL_EVAL, sCoreCategory },
+		{ "Double quoted text", IShellColorConstants.SHELL_DOUBLE_QUOTE, sCoreCategory },
+		{ "Function", IShellColorConstants.SHELL_FUNCTION, sCoreCategory },
 
-			{ "Keyword", IShellColorConstants.SHELL_KEYWORD, sCoreCategory },
+		{ "Keyword", IShellColorConstants.SHELL_KEYWORD, sCoreCategory },
 
-			{ "Single quoted text", IShellColorConstants.SHELL_SINGLE_QUOTE,
-					sCoreCategory },
-			{ "Variables", IShellColorConstants.SHELL_VARIABLE, sCoreCategory },
-			{ "Commands", IShellColorConstants.SHELL_COMMAND, sCoreCategory },
-			{ "Default", IShellColorConstants.SHELL_DEFAULT, sCoreCategory }
+		{ "Single quoted text", IShellColorConstants.SHELL_SINGLE_QUOTE, sCoreCategory },
+		{ "Variables", IShellColorConstants.SHELL_VARIABLE, sCoreCategory },
+		{ "Commands", IShellColorConstants.SHELL_COMMAND, sCoreCategory },
+		{ "Default", IShellColorConstants.SHELL_DEFAULT, sCoreCategory }
 
 	};
 
@@ -68,20 +63,16 @@ public class ShellColoringConfigurationBlock extends
 	}
 
 	@Override
-	protected ProjectionViewer createPreviewViewer(Composite parent,
-			IVerticalRuler verticalRuler, IOverviewRuler overviewRuler,
-			boolean showAnnotationsOverview, int styles, IPreferenceStore store) {
-		return new ScriptSourceViewer(parent, verticalRuler, overviewRuler,
-				showAnnotationsOverview, styles, store);
+	protected ProjectionViewer createPreviewViewer(Composite parent, IVerticalRuler verticalRuler,
+			IOverviewRuler overviewRuler, boolean showAnnotationsOverview, int styles, IPreferenceStore store) {
+		return new ScriptSourceViewer(parent, verticalRuler, overviewRuler, showAnnotationsOverview, styles, store);
 	}
 
 	@Override
-	protected ScriptSourceViewerConfiguration createSimpleSourceViewerConfiguration(
-			IColorManager colorManager, IPreferenceStore preferenceStore,
-			ITextEditor editor, boolean configureFormatter) {
-		return new SimpleShellSourceViewerConfiguration(colorManager,
-				preferenceStore, editor, IShellPartitions.SHELL_PARTITIONING,
-				true);
+	protected ScriptSourceViewerConfiguration createSimpleSourceViewerConfiguration(IColorManager colorManager,
+			IPreferenceStore preferenceStore, ITextEditor editor, boolean configureFormatter) {
+		return new SimpleShellSourceViewerConfiguration(colorManager, preferenceStore, editor,
+				IShellPartitions.SHELL_PARTITIONING, true);
 	}
 
 	@Override

@@ -20,11 +20,9 @@ import org.eclipse.swt.widgets.Group;
 /**
  * A preference block for folding of Shell Script comments.
  */
-public class ShellCommentFoldingPreferenceBlock extends
-		DocumentationFoldingPreferenceBlock {
+public class ShellCommentFoldingPreferenceBlock extends DocumentationFoldingPreferenceBlock {
 
-	public ShellCommentFoldingPreferenceBlock(OverlayPreferenceStore store,
-			PreferencePage page) {
+	public ShellCommentFoldingPreferenceBlock(OverlayPreferenceStore store, PreferencePage page) {
 		super(store, page);
 	}
 
@@ -33,14 +31,12 @@ public class ShellCommentFoldingPreferenceBlock extends
 	 * "Comments" and "Header comments" as it is done in the super class. It is
 	 * because we do not detect header comments and therefore we cannot fold
 	 * them separately.
-	 * 
+	 *
 	 * @see org.eclipse.dltk.ui.text.folding.DocumentationFoldingPreferenceBlock#addInitiallyFoldOptions(org.eclipse.swt.widgets.Group)
 	 */
 	@Override
 	protected void addInitiallyFoldOptions(Group group) {
-		createCheckBox(
-				group,
-				PreferencesMessages.FoldingConfigurationBlock_initiallyFoldComments,
+		createCheckBox(group, PreferencesMessages.FoldingConfigurationBlock_initiallyFoldComments,
 				PreferenceConstants.EDITOR_FOLDING_INIT_COMMENTS);
 	}
 

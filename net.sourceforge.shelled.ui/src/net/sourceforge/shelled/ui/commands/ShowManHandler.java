@@ -27,8 +27,8 @@ public class ShowManHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) {
 		try {
-			ISelection selection = HandlerUtil.getActiveEditor(event)
-					.getEditorSite().getSelectionProvider().getSelection();
+			ISelection selection = HandlerUtil.getActiveEditor(event).getEditorSite().getSelectionProvider()
+					.getSelection();
 			String manPage = "";
 			if ((selection != null) & (selection instanceof TextSelection)) {
 				TextSelection textSelection = (TextSelection) selection;
@@ -36,8 +36,7 @@ public class ShowManHandler extends AbstractHandler {
 			}
 
 			if (!manPage.isEmpty()) {
-				ManView view = (ManView) HandlerUtil
-						.getActiveWorkbenchWindow(event).getActivePage()
+				ManView view = (ManView) HandlerUtil.getActiveWorkbenchWindow(event).getActivePage()
 						.showView(ManView.ID);
 				view.setManPageName(manPage);
 			}

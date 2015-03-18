@@ -18,16 +18,13 @@ import org.eclipse.dltk.launching.IInterpreterInstallType;
 import org.eclipse.swt.widgets.Shell;
 
 public class AddShellScriptInterpreterDialog extends AddScriptInterpreterDialog {
-	public AddShellScriptInterpreterDialog(
-			IAddInterpreterDialogRequestor requestor, Shell shell,
-			IInterpreterInstallType[] interpreterInstallTypes,
-			IInterpreterInstall editedInterpreter) {
+	public AddShellScriptInterpreterDialog(IAddInterpreterDialogRequestor requestor, Shell shell,
+			IInterpreterInstallType[] interpreterInstallTypes, IInterpreterInstall editedInterpreter) {
 		super(requestor, shell, interpreterInstallTypes, editedInterpreter);
 	}
 
 	@Override
-	protected AbstractInterpreterLibraryBlock createLibraryBlock(
-			AddScriptInterpreterDialog dialog) {
+	protected AbstractInterpreterLibraryBlock createLibraryBlock(AddScriptInterpreterDialog dialog) {
 		return new ShellScriptInterpreterLibraryBlock(dialog);
 	}
 }

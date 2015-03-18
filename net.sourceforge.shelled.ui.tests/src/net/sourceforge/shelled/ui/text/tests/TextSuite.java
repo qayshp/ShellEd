@@ -18,8 +18,7 @@ import org.junit.runners.Suite;
  * 
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ AssignmentRuleTest.class,
-		DollarBraceCountingRuleTest.class, DollarRuleTest.class,
+@Suite.SuiteClasses({ AssignmentRuleTest.class, DollarBraceCountingRuleTest.class, DollarRuleTest.class,
 		DoubleQuoteScannerTest.class, EvalScannerTest.class })
 public class TextSuite {
 }

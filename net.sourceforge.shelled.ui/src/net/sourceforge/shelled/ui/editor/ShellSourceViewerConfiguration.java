@@ -12,18 +12,6 @@ package net.sourceforge.shelled.ui.editor;
 
 import java.util.ArrayList;
 
-import net.sourceforge.shelled.ui.Activator;
-import net.sourceforge.shelled.ui.IShellColorConstants;
-import net.sourceforge.shelled.ui.ShellContentAssistPreference;
-import net.sourceforge.shelled.ui.completion.ShellCompletionProcessor;
-import net.sourceforge.shelled.ui.text.DoubleQuoteScanner;
-import net.sourceforge.shelled.ui.text.EvalScanner;
-import net.sourceforge.shelled.ui.text.IShellPartitions;
-import net.sourceforge.shelled.ui.text.IndentType;
-import net.sourceforge.shelled.ui.text.ScriptAutoIndentStrategy;
-import net.sourceforge.shelled.ui.text.ShellCodeScanner;
-import net.sourceforge.shelled.ui.text.WhitespaceDetector;
-
 import org.eclipse.dltk.ui.text.AbstractScriptScanner;
 import org.eclipse.dltk.ui.text.IColorManager;
 import org.eclipse.dltk.ui.text.ScriptOutlineInformationControl;
@@ -53,11 +41,21 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-public class ShellSourceViewerConfiguration extends
-ScriptSourceViewerConfiguration {
+import net.sourceforge.shelled.ui.Activator;
+import net.sourceforge.shelled.ui.IShellColorConstants;
+import net.sourceforge.shelled.ui.ShellContentAssistPreference;
+import net.sourceforge.shelled.ui.completion.ShellCompletionProcessor;
+import net.sourceforge.shelled.ui.text.DoubleQuoteScanner;
+import net.sourceforge.shelled.ui.text.EvalScanner;
+import net.sourceforge.shelled.ui.text.IShellPartitions;
+import net.sourceforge.shelled.ui.text.IndentType;
+import net.sourceforge.shelled.ui.text.ScriptAutoIndentStrategy;
+import net.sourceforge.shelled.ui.text.ShellCodeScanner;
+import net.sourceforge.shelled.ui.text.WhitespaceDetector;
 
-	private static IRule getKeywords(IToken keywordToken, final String[] words,
-			IToken defaultToken) {
+public class ShellSourceViewerConfiguration extends ScriptSourceViewerConfiguration {
+
+	private static IRule getKeywords(IToken keywordToken, final String[] words, IToken defaultToken) {
 		WordRule wordL = new WordRule(new IWordDetector() {
 
 			@Override
@@ -86,25 +84,22 @@ ScriptSourceViewerConfiguration {
 	private AbstractScriptScanner fFunctionScanner;
 	private AbstractScriptScanner fSingleQuoteScanner;
 
-	public ShellSourceViewerConfiguration(IColorManager colorManager,
-			IPreferenceStore preferenceStore, ITextEditor editor,
-			String partitioning) {
+	public ShellSourceViewerConfiguration(IColorManager colorManager, IPreferenceStore preferenceStore,
+			ITextEditor editor, String partitioning) {
 		super(colorManager, preferenceStore, editor, partitioning);
 	}
 
 	@Override
-	public IAutoEditStrategy[] getAutoEditStrategies(
-			ISourceViewer sourceViewer, String contentType) {
+	public IAutoEditStrategy[] getAutoEditStrategies(ISourceViewer sourceViewer, String contentType) {
 		ScriptAutoIndentStrategy strategy = new ScriptAutoIndentStrategy();
 
 		ArrayList<IRule> rules = new ArrayList<>();
 		rules.add(new WhitespaceRule(new WhitespaceDetector()));
-		rules.add(getKeywords(new Token(IndentType.INCREMENT), new String[] {
-			"do", "case", "{", "then" }, Token.UNDEFINED));
-		rules.add(getKeywords(new Token(IndentType.DECREMENT), new String[] {
-			"done", "esac", "}", "fi" }, Token.UNDEFINED));
-		rules.add(getKeywords(new Token(IndentType.INFLEXION),
-				new String[] { "else" }, Token.UNDEFINED));
+		rules.add(getKeywords(new Token(IndentType.INCREMENT), new String[] { "do", "case", "{", "then" },
+				Token.UNDEFINED));
+		rules.add(getKeywords(new Token(IndentType.DECREMENT), new String[] { "done", "esac", "}", "fi" },
+				Token.UNDEFINED));
+		rules.add(getKeywords(new Token(IndentType.INFLEXION), new String[] { "else" }, Token.UNDEFINED));
 
 		strategy.setRules(rules.toArray(new IRule[0]));
 
@@ -117,26 +112,23 @@ ScriptSourceViewerConfiguration {
 	}
 
 	@Override
-	protected IInformationControlCreator getOutlinePresenterControlCreator(
-			ISourceViewer sourceViewer, final String commandId) {
+	protected IInformationControlCreator getOutlinePresenterControlCreator(ISourceViewer sourceViewer,
+			final String commandId) {
 		return new IInformationControlCreator() {
 			@Override
 			public IInformationControl createInformationControl(Shell parent) {
 				int shellStyle = SWT.RESIZE;
 				int treeStyle = SWT.V_SCROLL | SWT.H_SCROLL;
-				return new ScriptOutlineInformationControl(parent, shellStyle,
-						treeStyle, commandId, Activator.getDefault()
-						.getPreferenceStore());
+				return new ScriptOutlineInformationControl(parent, shellStyle, treeStyle, commandId,
+						Activator.getDefault().getPreferenceStore());
 			}
 		};
 	}
 
 	@Override
-	public IPresentationReconciler getPresentationReconciler(
-			ISourceViewer sourceViewer) {
+	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new ScriptPresentationReconciler();
-		reconciler.setDocumentPartitioning(this
-				.getConfiguredDocumentPartitioning(sourceViewer));
+		reconciler.setDocumentPartitioning(this.getConfiguredDocumentPartitioning(sourceViewer));
 
 		DefaultDamagerRepairer dr;
 
@@ -179,48 +171,35 @@ ScriptSourceViewerConfiguration {
 	@Override
 	protected void initializeScanners() {
 		// This is our code scanner
-		this.fCodeScanner = new ShellCodeScanner(this.getColorManager(),
-				this.fPreferenceStore);
+		this.fCodeScanner = new ShellCodeScanner(this.getColorManager(), this.fPreferenceStore);
 		// This is default scanners for partitions with same color.
-		this.fFunctionScanner = new SingleTokenScriptScanner(
-				this.getColorManager(), this.fPreferenceStore,
+		this.fFunctionScanner = new SingleTokenScriptScanner(this.getColorManager(), this.fPreferenceStore,
 				IShellColorConstants.SHELL_FUNCTION);
-		this.fHashbangScanner = new SingleTokenScriptScanner(
-				this.getColorManager(), this.fPreferenceStore,
+		this.fHashbangScanner = new SingleTokenScriptScanner(this.getColorManager(), this.fPreferenceStore,
 				IShellColorConstants.SHELL_HASHBANG);
-		this.fSingleQuoteScanner = new SingleTokenScriptScanner(
-				this.getColorManager(), this.fPreferenceStore,
+		this.fSingleQuoteScanner = new SingleTokenScriptScanner(this.getColorManager(), this.fPreferenceStore,
 				IShellColorConstants.SHELL_SINGLE_QUOTE);
-		this.fDoubleQuoteScanner = new DoubleQuoteScanner(
-				this.getColorManager(), this.fPreferenceStore);
-		this.fParamScanner = new SingleTokenScriptScanner(
-				this.getColorManager(), this.fPreferenceStore,
+		this.fDoubleQuoteScanner = new DoubleQuoteScanner(this.getColorManager(), this.fPreferenceStore);
+		this.fParamScanner = new SingleTokenScriptScanner(this.getColorManager(), this.fPreferenceStore,
 				IShellColorConstants.SHELL_VARIABLE);
-		this.fEvalScanner = new EvalScanner(this.getColorManager(),
-				this.fPreferenceStore);
-		this.fCommentScanner = createCommentScanner(
-				IShellColorConstants.SHELL_COMMENT,
+		this.fEvalScanner = new EvalScanner(this.getColorManager(), this.fPreferenceStore);
+		this.fCommentScanner = createCommentScanner(IShellColorConstants.SHELL_COMMENT,
 				IShellColorConstants.SHELL_TODO_TAG);
 	}
 
 	@Override
 	protected void alterContentAssistant(ContentAssistant assistant) {
-		IContentAssistProcessor scriptProcessor = new ShellCompletionProcessor(
-				getEditor(), assistant, IDocument.DEFAULT_CONTENT_TYPE);
-		assistant.setContentAssistProcessor(scriptProcessor,
+		IContentAssistProcessor scriptProcessor = new ShellCompletionProcessor(getEditor(), assistant,
 				IDocument.DEFAULT_CONTENT_TYPE);
+		assistant.setContentAssistProcessor(scriptProcessor, IDocument.DEFAULT_CONTENT_TYPE);
 	}
 
 	@Override
 	public boolean affectsTextPresentation(PropertyChangeEvent event) {
-		return fCodeScanner.affectsBehavior(event)
-				|| fCommentScanner.affectsBehavior(event)
-				|| fDoubleQuoteScanner.affectsBehavior(event)
-				|| fSingleQuoteScanner.affectsBehavior(event)
-				|| fFunctionScanner.affectsBehavior(event)
-				|| fParamScanner.affectsBehavior(event)
-				|| fEvalScanner.affectsBehavior(event)
-				|| fHashbangScanner.affectsBehavior(event);
+		return fCodeScanner.affectsBehavior(event) || fCommentScanner.affectsBehavior(event)
+				|| fDoubleQuoteScanner.affectsBehavior(event) || fSingleQuoteScanner.affectsBehavior(event)
+				|| fFunctionScanner.affectsBehavior(event) || fParamScanner.affectsBehavior(event)
+				|| fEvalScanner.affectsBehavior(event) || fHashbangScanner.affectsBehavior(event);
 	}
 
 	@Override

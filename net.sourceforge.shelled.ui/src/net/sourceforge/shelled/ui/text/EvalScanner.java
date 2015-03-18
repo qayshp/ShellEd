@@ -10,14 +10,14 @@ package net.sourceforge.shelled.ui.text;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.shelled.ui.IShellColorConstants;
-
 import org.eclipse.dltk.ui.text.AbstractScriptScanner;
 import org.eclipse.dltk.ui.text.IColorManager;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.WhitespaceRule;
+
+import net.sourceforge.shelled.ui.IShellColorConstants;
 
 /**
  * Scans command substitution document partitions. I.e., the sections between
@@ -29,9 +29,8 @@ public class EvalScanner extends AbstractScriptScanner {
 	 * Array of preference keys used to define the style of token types used by
 	 * this scanner.
 	 */
-	private static String fgTokenProperties[] = new String[] {
-		IShellColorConstants.SHELL_EVAL,
-			IShellColorConstants.SHELL_VARIABLE };
+	private static String fgTokenProperties[] = new String[] { IShellColorConstants.SHELL_EVAL,
+		IShellColorConstants.SHELL_VARIABLE };
 
 	public EvalScanner(IColorManager manager, IPreferenceStore store) {
 		super(manager, store);

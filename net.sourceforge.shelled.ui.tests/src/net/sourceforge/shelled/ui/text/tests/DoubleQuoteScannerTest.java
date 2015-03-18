@@ -8,14 +8,15 @@
 package net.sourceforge.shelled.ui.text.tests;
 
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.shelled.ui.Activator;
-import net.sourceforge.shelled.ui.IShellColorConstants;
-import net.sourceforge.shelled.ui.text.DoubleQuoteScanner;
 
 import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.RuleBasedScanner;
 import org.junit.Test;
+
+import net.sourceforge.shelled.ui.Activator;
+import net.sourceforge.shelled.ui.IShellColorConstants;
+import net.sourceforge.shelled.ui.text.DoubleQuoteScanner;
 
 /**
  * Test the scanner for double quote partitions.
@@ -24,8 +25,7 @@ public class DoubleQuoteScannerTest extends AbstractScannerTester {
 
 	@Override
 	protected RuleBasedScanner getScanner() {
-		return new DoubleQuoteScanner(cm, Activator.getDefault()
-				.getPreferenceStore());
+		return new DoubleQuoteScanner(cm, Activator.getDefault().getPreferenceStore());
 	}
 
 	@Override
@@ -43,8 +43,7 @@ public class DoubleQuoteScannerTest extends AbstractScannerTester {
 		assertEquals(4, scanner.getTokenLength());
 		assertEquals(8, scanner.getTokenOffset());
 		TextAttribute ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_VARIABLE));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_VARIABLE));
 	}
 
 	/**
@@ -57,8 +56,7 @@ public class DoubleQuoteScannerTest extends AbstractScannerTester {
 		assertEquals(6, scanner.getTokenLength());
 		assertEquals(1, scanner.getTokenOffset());
 		TextAttribute ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_VARIABLE));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_VARIABLE));
 	}
 
 	/**
@@ -71,8 +69,7 @@ public class DoubleQuoteScannerTest extends AbstractScannerTester {
 		assertEquals(6, scanner.getTokenLength());
 		assertEquals(12, scanner.getTokenOffset());
 		TextAttribute ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_EVAL));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_EVAL));
 	}
 
 	/**
@@ -85,8 +82,7 @@ public class DoubleQuoteScannerTest extends AbstractScannerTester {
 		assertEquals(7, scanner.getTokenLength());
 		assertEquals(19, scanner.getTokenOffset());
 		TextAttribute ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_EVAL));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_EVAL));
 	}
 
 	/**
@@ -99,21 +95,18 @@ public class DoubleQuoteScannerTest extends AbstractScannerTester {
 		assertEquals(1, scanner.getTokenLength());
 		assertEquals(0, scanner.getTokenOffset());
 		TextAttribute ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_DOUBLE_QUOTE));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_DOUBLE_QUOTE));
 
 		token = getNthToken(2);
 		assertEquals(1, scanner.getTokenLength());
 		assertEquals(7, scanner.getTokenOffset());
 		ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_DOUBLE_QUOTE));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_DOUBLE_QUOTE));
 
 		token = getNthToken(3);
 		assertEquals(1, scanner.getTokenLength());
 		assertEquals(18, scanner.getTokenOffset());
 		ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_DOUBLE_QUOTE));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_DOUBLE_QUOTE));
 	}
 }

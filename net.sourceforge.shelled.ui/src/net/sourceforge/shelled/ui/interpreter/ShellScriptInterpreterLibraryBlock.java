@@ -15,8 +15,7 @@ import org.eclipse.dltk.internal.debug.ui.interpreters.AddScriptInterpreterDialo
 import org.eclipse.dltk.internal.debug.ui.interpreters.LibraryLabelProvider;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 
-public class ShellScriptInterpreterLibraryBlock extends
-		AbstractInterpreterLibraryBlock {
+public class ShellScriptInterpreterLibraryBlock extends AbstractInterpreterLibraryBlock {
 	public ShellScriptInterpreterLibraryBlock(AddScriptInterpreterDialog d) {
 		super(d);
 	}

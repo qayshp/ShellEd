@@ -10,15 +10,14 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.completion;
 
-import net.sourceforge.shelled.core.ShelledNature;
-
 import org.eclipse.dltk.ui.text.completion.ScriptCompletionProcessor;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
 import org.eclipse.ui.IEditorPart;
 
+import net.sourceforge.shelled.core.ShelledNature;
+
 public class ShellCompletionProcessor extends ScriptCompletionProcessor {
-	public ShellCompletionProcessor(IEditorPart editor,
-			ContentAssistant assistant, String partition) {
+	public ShellCompletionProcessor(IEditorPart editor, ContentAssistant assistant, String partition) {
 		super(editor, assistant, partition);
 	}
 

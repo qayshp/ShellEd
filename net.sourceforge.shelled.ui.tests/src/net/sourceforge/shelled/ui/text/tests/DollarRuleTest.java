@@ -10,13 +10,13 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.text.tests;
 
-import net.sourceforge.shelled.ui.text.DollarDetector;
-import net.sourceforge.shelled.ui.text.DollarRule;
-import net.sourceforge.shelled.ui.text.IShellPartitions;
-
 import org.eclipse.jface.text.rules.Token;
 import org.junit.Assert;
 import org.junit.Test;
+
+import net.sourceforge.shelled.ui.text.DollarDetector;
+import net.sourceforge.shelled.ui.text.DollarRule;
+import net.sourceforge.shelled.ui.text.IShellPartitions;
 
 /**
  * Tests the dollar rule that detects $var style parameter expansions.
@@ -27,8 +27,8 @@ public class DollarRuleTest {
 	private MockScanner fScanner;
 
 	// Objects under test
-	private static DollarRule fRule = new DollarRule(new DollarDetector(),
-			Token.UNDEFINED, new Token(IShellPartitions.PARAM_CONTENT_TYPE));
+	private static DollarRule fRule = new DollarRule(new DollarDetector(), Token.UNDEFINED,
+			new Token(IShellPartitions.PARAM_CONTENT_TYPE));
 
 	/**
 	 * Don't match ${} syntax because that is taken care of in another rule.
@@ -37,8 +37,7 @@ public class DollarRuleTest {
 	public void testDollarBraceMatch() {
 		fScanner = new MockScanner("${braces}");
 		Assert.assertTrue(fRule.evaluate(fScanner).isUndefined());
-		Assert.assertEquals("", fScanner.getBuffer().substring(0,
-				fScanner.getOffset()));
+		Assert.assertEquals("", fScanner.getBuffer().substring(0, fScanner.getOffset()));
 	}
 
 	/**
@@ -49,8 +48,7 @@ public class DollarRuleTest {
 	public void testDollarMatch() {
 		fScanner = new MockScanner("$alpha_01[5] numeric vars");
 		Assert.assertFalse(fRule.evaluate(fScanner).isUndefined());
-		Assert.assertEquals("$alpha_01", fScanner.getBuffer().substring(0,
-				fScanner.getOffset()));
+		Assert.assertEquals("$alpha_01", fScanner.getBuffer().substring(0, fScanner.getOffset()));
 	}
 
 	/**
@@ -63,8 +61,8 @@ public class DollarRuleTest {
 	@Test
 	public void testPositionalSpecialMatch() {
 		// List of valid special or positional parameters
-		char specials[] = new char[] { '*', '@', '#', '?', '-', '$', '!', '_',
-				'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', };
+		char specials[] = new char[] { '*', '@', '#', '?', '-', '$', '!', '_', '0', '1', '2', '3', '4', '5', '6', '7',
+				'8', '9', };
 		for (int i = '!'; i <= '~'; i++) {
 			String s = "$" + Character.toString((char) i);
 			fScanner = new MockScanner(s + "some more text");
@@ -74,10 +72,8 @@ public class DollarRuleTest {
 			boolean isSpecial = false;
 			for (int j = 0; j < specials.length; j++) {
 				if ((char) i == specials[j]) {
-					Assert.assertFalse("Testing Special " + s, fRule.evaluate(
-							fScanner).isUndefined());
-					Assert.assertEquals(s, fScanner.getBuffer().substring(0,
-							fScanner.getOffset()));
+					Assert.assertFalse("Testing Special " + s, fRule.evaluate(fScanner).isUndefined());
+					Assert.assertEquals(s, fScanner.getBuffer().substring(0, fScanner.getOffset()));
 					isSpecial = true;
 					break;
 				}
@@ -87,16 +83,12 @@ public class DollarRuleTest {
 				if (Character.isLetter((char) i)) {
 					// Make sure that valid characters that are not specials are
 					// matched normally
-					Assert.assertFalse("Testing Not Special " + s, fRule
-							.evaluate(fScanner).isUndefined());
-					Assert.assertEquals(s + "some", fScanner.getBuffer()
-							.substring(0, fScanner.getOffset()));
+					Assert.assertFalse("Testing Not Special " + s, fRule.evaluate(fScanner).isUndefined());
+					Assert.assertEquals(s + "some", fScanner.getBuffer().substring(0, fScanner.getOffset()));
 				} else {
 					// Make sure that invalid characters are not matched at all
-					Assert.assertTrue("Testing Not Special " + s, fRule
-							.evaluate(fScanner).isUndefined());
-					Assert.assertEquals("", fScanner.getBuffer().substring(0,
-							fScanner.getOffset()));
+					Assert.assertTrue("Testing Not Special " + s, fRule.evaluate(fScanner).isUndefined());
+					Assert.assertEquals("", fScanner.getBuffer().substring(0, fScanner.getOffset()));
 				}
 			}
 		}

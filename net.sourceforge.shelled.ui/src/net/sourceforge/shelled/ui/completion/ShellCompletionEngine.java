@@ -10,8 +10,6 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.completion;
 
-import net.sourceforge.shelled.ui.text.ShellCodeScanner;
-
 import org.eclipse.dltk.codeassist.ScriptCompletionEngine;
 import org.eclipse.dltk.compiler.env.IModuleSource;
 import org.eclipse.dltk.core.CompletionProposal;
@@ -19,6 +17,8 @@ import org.eclipse.dltk.core.DLTKCore;
 import org.eclipse.dltk.core.IModelElement;
 import org.eclipse.dltk.core.IModelElementVisitor;
 import org.eclipse.dltk.core.ModelException;
+
+import net.sourceforge.shelled.ui.text.ShellCodeScanner;
 
 public class ShellCompletionEngine extends ScriptCompletionEngine {
 
@@ -32,8 +32,7 @@ public class ShellCompletionEngine extends ScriptCompletionEngine {
 		String temp = module.getSourceContents().substring(0, position);
 		int lastSpace = temp.lastIndexOf(' ');
 		int lastNewline = temp.lastIndexOf('\n');
-		String complPrefix = temp.substring(
-				lastSpace > lastNewline ? lastSpace : lastNewline).trim();
+		String complPrefix = temp.substring(lastSpace > lastNewline ? lastSpace : lastNewline).trim();
 		this.requestor.beginReporting();
 		for (String keyword : ShellCodeScanner.KEYWORDS) {
 			if (keyword.startsWith(complPrefix)) {
@@ -66,12 +65,10 @@ public class ShellCompletionEngine extends ScriptCompletionEngine {
 	}
 
 	private void createProposal(String name, IModelElement element) {
-		CompletionProposal proposal = this.createProposal(
-				CompletionProposal.KEYWORD, this.actualCompletionPosition);
+		CompletionProposal proposal = this.createProposal(CompletionProposal.KEYWORD, this.actualCompletionPosition);
 		proposal.setName(name);
 		proposal.setCompletion(name);
-		proposal.setReplaceRange(actualCompletionPosition - offset,
-				actualCompletionPosition - offset);
+		proposal.setReplaceRange(actualCompletionPosition - offset, actualCompletionPosition - offset);
 		proposal.setRelevance(20);
 		proposal.setModelElement(element);
 		this.requestor.accept(proposal);

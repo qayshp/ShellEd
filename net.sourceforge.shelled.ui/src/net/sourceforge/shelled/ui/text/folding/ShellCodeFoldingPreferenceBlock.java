@@ -17,10 +17,8 @@ import org.eclipse.jface.preference.PreferencePage;
 /**
  * A preference block for folding of Shell Script commands.
  */
-public class ShellCodeFoldingPreferenceBlock extends
-		SourceCodeFoldingPreferenceBlock {
-	public ShellCodeFoldingPreferenceBlock(OverlayPreferenceStore store,
-			PreferencePage page) {
+public class ShellCodeFoldingPreferenceBlock extends SourceCodeFoldingPreferenceBlock {
+	public ShellCodeFoldingPreferenceBlock(OverlayPreferenceStore store, PreferencePage page) {
 		super(store, page);
 	}
 

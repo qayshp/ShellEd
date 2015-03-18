@@ -22,20 +22,12 @@ public class AssignmentRule implements IRule {
 	private final IWordDetector detector;
 	private final IToken successToken;
 
-	public AssignmentRule(IWordDetector detector, IToken defaultToken,
-			IToken token) {
+	public AssignmentRule(IWordDetector detector, IToken defaultToken, IToken token) {
 		this.detector = detector;
 		this.successToken = token;
 		this.defaultToken = defaultToken;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.jface.text.rules.IRule#evaluate(org.eclipse.jface.text.rules
-	 * .ICharacterScanner)
-	 */
 	@Override
 	public IToken evaluate(ICharacterScanner scanner) {
 		char c = (char) scanner.read();
@@ -58,7 +50,7 @@ public class AssignmentRule implements IRule {
 
 	/**
 	 * Returns the characters in the buffer to the scanner.
-	 * 
+	 *
 	 * @param scanner
 	 *            the scanner to be used
 	 */

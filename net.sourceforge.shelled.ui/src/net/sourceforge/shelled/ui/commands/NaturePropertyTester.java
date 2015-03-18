@@ -7,13 +7,13 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.commands;
 
-import net.sourceforge.shelled.core.ShelledNature;
-
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+
+import net.sourceforge.shelled.core.ShelledNature;
 
 /**
  * A property tester that returns true if the project containing any given
@@ -25,18 +25,15 @@ public class NaturePropertyTester extends PropertyTester {
 	private static final String HAS_SHELLED_NATURE = "hasShellEdNature"; //$NON-NLS-1$
 
 	@Override
-	public boolean test(Object receiver, String property, Object[] args,
-			Object expectedValue) {
-		IResource resource = (IResource) ((IAdaptable) receiver)
-				.getAdapter(IResource.class);
+	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+		IResource resource = (IResource) ((IAdaptable) receiver).getAdapter(IResource.class);
 		if (resource == null) {
 			return false;
 		}
 		if (property.equals(HAS_SHELLED_NATURE)) {
 			try {
 				IProject proj = resource.getProject();
-				return proj.isAccessible()
-						&& proj.hasNature(ShelledNature.SHELLED_NATURE);
+				return proj.isAccessible() && proj.hasNature(ShelledNature.SHELLED_NATURE);
 			} catch (CoreException e) {
 				return false;
 			}

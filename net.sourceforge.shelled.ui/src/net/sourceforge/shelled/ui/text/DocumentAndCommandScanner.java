@@ -37,10 +37,8 @@ public class DocumentAndCommandScanner extends RuleBasedScanner {
 				} catch (BadLocationException e) {
 				}
 			}
-			if ((fDocumentCommand != null)
-					&& (fOffset < (fRangeEnd + fDocumentCommand.text.length()))) {
-				return fDocumentCommand.text
-						.charAt(((fRangeEnd + fDocumentCommand.text.length()) - fOffset) - 1);
+			if ((fDocumentCommand != null) && (fOffset < (fRangeEnd + fDocumentCommand.text.length()))) {
+				return fDocumentCommand.text.charAt(((fRangeEnd + fDocumentCommand.text.length()) - fOffset) - 1);
 			}
 			return EOF;
 		} finally {
@@ -51,8 +49,7 @@ public class DocumentAndCommandScanner extends RuleBasedScanner {
 	/**
 	 * Set this to use as a normal in conjunction with DocumentCommand's
 	 */
-	public void setRange(IDocument document, DocumentCommand documentCommand,
-			int offset, int length) {
+	public void setRange(IDocument document, DocumentCommand documentCommand, int offset, int length) {
 		setRange(document, offset, length);
 		fDocumentCommand = documentCommand;
 	}

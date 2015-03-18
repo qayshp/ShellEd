@@ -10,10 +10,10 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.interpreter;
 
-import net.sourceforge.shelled.core.ShelledNature;
-
 import org.eclipse.dltk.core.PreferencesLookupDelegate;
 import org.eclipse.dltk.debug.ui.launchConfigurations.MainLaunchConfigurationTab;
+
+import net.sourceforge.shelled.core.ShelledNature;
 
 public class ShellMainLaunchConfigurationTab extends MainLaunchConfigurationTab {
 
@@ -22,8 +22,7 @@ public class ShellMainLaunchConfigurationTab extends MainLaunchConfigurationTab 
 	}
 
 	@Override
-	protected boolean breakOnFirstLinePrefEnabled(
-			PreferencesLookupDelegate delegate) {
+	protected boolean breakOnFirstLinePrefEnabled(PreferencesLookupDelegate delegate) {
 		return false;
 	}
 

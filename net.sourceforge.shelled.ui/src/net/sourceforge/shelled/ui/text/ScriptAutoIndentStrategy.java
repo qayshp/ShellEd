@@ -11,8 +11,6 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.text;
 
-import net.sourceforge.shelled.ui.Activator;
-
 import org.eclipse.dltk.ui.CodeFormatterConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.BadLocationException;
@@ -22,6 +20,8 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.TextUtilities;
 import org.eclipse.jface.text.rules.IRule;
 import org.eclipse.jface.text.rules.IToken;
+
+import net.sourceforge.shelled.ui.Activator;
 
 /**
  * An indent strategy capable of indenting and unindenting on any set of words,
@@ -81,10 +81,8 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 			int p = c.offset == document.getLength() ? c.offset - 1 : c.offset;
 			int line = document.getLineOfOffset(p);
 			int start = document.getLineOffset(line);
-			int bracketCount = getBracketCount(document, null, start, c.offset,
-					true);
-			buf.append(generateIndentation(getIndentOfLine(document, line),
-					bracketCount <= 0 ? 0 : 1));
+			int bracketCount = getBracketCount(document, null, start, c.offset, true);
+			buf.append(generateIndentation(getIndentOfLine(document, line), bracketCount <= 0 ? 0 : 1));
 			c.text = buf.toString();
 		} catch (BadLocationException x) {
 			x.printStackTrace();
@@ -100,8 +98,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 * @param c
 	 *            the command being performed
 	 */
-	protected void smartIndentAfterKeypress(IDocument document,
-			DocumentCommand c) {
+	protected void smartIndentAfterKeypress(IDocument document, DocumentCommand c) {
 		if ((c.offset == -1) || (document.getLength() == 0))
 			return;
 		try {
@@ -111,10 +108,8 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 			int start = document.getLineOffset(line);
 			int whiteEnd = findEndOfWhiteSpace(document, start, c.offset);
 
-			int bracketCount = getBracketCount(document, c, start, c.offset,
-					false);
-			buf.append(generateIndentation(getIndentOfLine(document, line),
-					bracketCount >= 0 ? 0 : -1));
+			int bracketCount = getBracketCount(document, c, start, c.offset, false);
+			buf.append(generateIndentation(getIndentOfLine(document, line), bracketCount >= 0 ? 0 : -1));
 			buf.append(document.get(whiteEnd, c.offset - whiteEnd));
 			buf.append(c.text);
 			// Alter the command
@@ -142,8 +137,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 * @exception BadLocationException
 	 *                if offset is an invalid position in the given document
 	 */
-	private static int findEndOfWhiteSpace(IDocument document, int offset,
-			int end) throws BadLocationException {
+	private static int findEndOfWhiteSpace(IDocument document, int offset, int end) throws BadLocationException {
 		while (offset < end) {
 			char c = document.getChar(offset);
 			if ((c != ' ') && (c != '\t')) {
@@ -163,8 +157,7 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 *            - the line number being searched
 	 * @return the string containing the indentation from the specified line
 	 */
-	private static String getIndentOfLine(IDocument document, int line)
-			throws BadLocationException {
+	private static String getIndentOfLine(IDocument document, int line) throws BadLocationException {
 		if (line > -1) {
 			int start = document.getLineOffset(line);
 			int end = start + document.getLineLength(line);
@@ -194,8 +187,8 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	 * @return the resulting bracket count, a positive value means we've
 	 *         encountered more opening than closing brackets
 	 */
-	private int getBracketCount(IDocument document, DocumentCommand command,
-			int start, int end, boolean ignoreInflexions) {
+	private int getBracketCount(IDocument document, DocumentCommand command, int start, int end,
+			boolean ignoreInflexions) {
 		int bracketcount = 0;
 		if (command != null)
 			scanner.setRange(document, command, start, end - start);
@@ -236,10 +229,8 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 	private static String generateIndentation(String previous, int additional) {
 		// Get the indentation preferences
 		IPreferenceStore prefs = Activator.getDefault().getPreferenceStore();
-		String tabChar = prefs
-				.getString(CodeFormatterConstants.FORMATTER_TAB_CHAR);
-		int indentSize = prefs
-				.getInt(CodeFormatterConstants.FORMATTER_INDENTATION_SIZE);
+		String tabChar = prefs.getString(CodeFormatterConstants.FORMATTER_TAB_CHAR);
+		int indentSize = prefs.getInt(CodeFormatterConstants.FORMATTER_INDENTATION_SIZE);
 		int tabSize = prefs.getInt(CodeFormatterConstants.FORMATTER_TAB_SIZE);
 
 		// Size in characters of the indentation of the previous line
@@ -253,8 +244,10 @@ public class ScriptAutoIndentStrategy implements IAutoEditStrategy {
 
 		// Trim previous indentation back to nearest tab stop
 		int minLength = Math.min(endLength, preLength);
-		int maxCopyLength = tabSize > 0 ? minLength - (minLength % tabSize)
-				: minLength; // maximum indent to copy
+		int maxCopyLength = tabSize > 0 ? minLength - (minLength % tabSize) : minLength; // maximum
+		// indent
+		// to
+		// copy
 		String indent = stripExtraChars(previous, maxCopyLength, tabSize);
 
 		// Add additional indentation

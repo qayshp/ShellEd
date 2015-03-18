@@ -19,7 +19,6 @@ public class ShellTodoParserType extends AbstractTodoTaskBuildParticipantType {
 
 	@Override
 	protected ITodoTaskPreferences getPreferences(IScriptProject project) {
-		return new TodoTaskPreferencesOnPreferenceLookupDelegate(
-				Activator.PLUGIN_ID, project);
+		return new TodoTaskPreferencesOnPreferenceLookupDelegate(Activator.PLUGIN_ID, project);
 	}
 }

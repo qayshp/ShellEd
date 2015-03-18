@@ -10,15 +10,12 @@
  *******************************************************************************/
 package net.sourceforge.shelled.core.tests;
 
-
 import net.sourceforge.shelled.core.parser.tests.ShellScriptSourceParserTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({
-  ShellScriptSourceParserTest.class
-})
+@Suite.SuiteClasses({ ShellScriptSourceParserTest.class })
 public class AllTests {
 }

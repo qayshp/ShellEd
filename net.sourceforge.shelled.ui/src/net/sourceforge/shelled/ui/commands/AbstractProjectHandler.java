@@ -25,8 +25,7 @@ public abstract class AbstractProjectHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) {
-		IStructuredSelection selection = (IStructuredSelection) HandlerUtil
-				.getCurrentSelection(event);
+		IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
 		Iterator<?> iterator = selection.iterator();
 		while (iterator.hasNext()) {
 			Object element = iterator.next();
@@ -34,8 +33,7 @@ public abstract class AbstractProjectHandler extends AbstractHandler {
 			if (element instanceof IProject) {
 				project = (IProject) element;
 			} else if (element instanceof IAdaptable) {
-				project = (IProject) ((IAdaptable) element)
-						.getAdapter(IProject.class);
+				project = (IProject) ((IAdaptable) element).getAdapter(IProject.class);
 			}
 			if (project != null) {
 				fettleProject(project);

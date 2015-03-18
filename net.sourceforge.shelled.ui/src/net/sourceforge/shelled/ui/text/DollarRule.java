@@ -55,9 +55,8 @@ public class DollarRule implements IRule {
 	 * @return true if the specified character is a special parameter
 	 */
 	protected boolean isSpecial(char c) {
-		return ((c == '*') || (c == '@') || (c == '#') || (c == '?')
-				|| (c == '-') || (c == '$') || (c == '!') || (c == '_') || Character
-					.isDigit(c));
+		return ((c == '*') || (c == '@') || (c == '#') || (c == '?') || (c == '-') || (c == '$') || (c == '!')
+				|| (c == '_') || Character.isDigit(c));
 	}
 
 	@Override
@@ -70,8 +69,7 @@ public class DollarRule implements IRule {
 				c = scanner.read();
 				if ((buffer.length() == 1) && isSpecial((char) c))
 					return successToken;
-			} while ((c != ICharacterScanner.EOF)
-					&& detector.isWordPart((char) c));
+			} while ((c != ICharacterScanner.EOF) && detector.isWordPart((char) c));
 			scanner.unread();
 			if (buffer.length() > 1)
 				return successToken;

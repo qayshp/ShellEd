@@ -20,11 +20,9 @@ import org.eclipse.dltk.debug.ui.launchConfigurations.ScriptCommonTab;
 public class ShellTabGroup extends AbstractLaunchConfigurationTabGroup {
 	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
-		MainLaunchConfigurationTab main = new ShellMainLaunchConfigurationTab(
-				mode);
+		MainLaunchConfigurationTab main = new ShellMainLaunchConfigurationTab(mode);
 		ScriptArgumentsTab args = new ScriptArgumentsTab();
-		ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] { main,
-				args, new ScriptCommonTab(main) };
+		ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] { main, args, new ScriptCommonTab(main) };
 		setTabs(tabs);
 	}
 }

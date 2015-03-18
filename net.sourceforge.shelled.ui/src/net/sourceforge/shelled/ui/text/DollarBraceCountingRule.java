@@ -42,10 +42,9 @@ public class DollarBraceCountingRule extends PatternRule {
 	 * @param escapeChar
 	 *            any character following this one will be ignored
 	 */
-	public DollarBraceCountingRule(char openingBrace, char closingBrace,
-			IToken token, char escapeChar) {
-		super("$" + Character.toString(openingBrace), Character
-				.toString(closingBrace), token, escapeChar, true, false, false);
+	public DollarBraceCountingRule(char openingBrace, char closingBrace, IToken token, char escapeChar) {
+		super("$" + Character.toString(openingBrace), Character.toString(closingBrace), token, escapeChar, true, false,
+				false);
 		fOpening = openingBrace;
 		fClosing = closingBrace;
 	}
@@ -66,14 +65,12 @@ public class DollarBraceCountingRule extends PatternRule {
 		if ((fLineDelimiters == null) || (originalDelimiters.length != count)) {
 			fSortedLineDelimiters = new char[count][];
 		} else {
-			while ((count > 0)
-					&& (fLineDelimiters[count - 1] == originalDelimiters[count - 1]))
+			while ((count > 0) && (fLineDelimiters[count - 1] == originalDelimiters[count - 1]))
 				count--;
 		}
 		if (count != 0) {
 			fLineDelimiters = originalDelimiters;
-			System.arraycopy(fLineDelimiters, 0, fSortedLineDelimiters, 0,
-					fLineDelimiters.length);
+			System.arraycopy(fLineDelimiters, 0, fSortedLineDelimiters, 0, fLineDelimiters.length);
 		}
 
 		int readCount = 1;
@@ -85,9 +82,7 @@ public class DollarBraceCountingRule extends PatternRule {
 				if (fEscapeContinuesLine) {
 					c = scanner.read();
 					for (char[] fSortedLineDelimiter : fSortedLineDelimiters) {
-						if ((c == fSortedLineDelimiter[0])
-								&& sequenceDetected(scanner,
-										fSortedLineDelimiter, true))
+						if ((c == fSortedLineDelimiter[0]) && sequenceDetected(scanner, fSortedLineDelimiter, true))
 							break;
 					}
 				} else
@@ -106,9 +101,7 @@ public class DollarBraceCountingRule extends PatternRule {
 				// Check for end of line since it can be used to terminate the
 				// pattern.
 				for (char[] fSortedLineDelimiter : fSortedLineDelimiters) {
-					if ((c == fSortedLineDelimiter[0])
-							&& sequenceDetected(scanner, fSortedLineDelimiter,
-									true))
+					if ((c == fSortedLineDelimiter[0]) && sequenceDetected(scanner, fSortedLineDelimiter, true))
 						return true;
 				}
 			}

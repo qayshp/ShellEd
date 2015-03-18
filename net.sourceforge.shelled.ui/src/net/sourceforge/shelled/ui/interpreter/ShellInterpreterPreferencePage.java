@@ -13,8 +13,7 @@ package net.sourceforge.shelled.ui.interpreter;
 import org.eclipse.dltk.internal.debug.ui.interpreters.InterpretersBlock;
 import org.eclipse.dltk.internal.debug.ui.interpreters.ScriptInterpreterPreferencePage;
 
-public class ShellInterpreterPreferencePage extends
-		ScriptInterpreterPreferencePage {
+public class ShellInterpreterPreferencePage extends ScriptInterpreterPreferencePage {
 
 	public static final String PAGE_ID = "net.sourceforge.shelled.ui.preferences.interpreters";
 

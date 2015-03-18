@@ -34,23 +34,18 @@ public class ShelledSelectionEngine extends ScriptSelectionEngine {
 	@Override
 	public IModelElement[] select(IModuleSource module, final int offset, int i) {
 		sourceModule = (ISourceModule) module.getModelElement();
-		ModuleDeclaration moduleDeclaration = SourceParserUtil
-				.getModuleDeclaration(sourceModule, null);
+		ModuleDeclaration moduleDeclaration = SourceParserUtil.getModuleDeclaration(sourceModule, null);
 		final List<IModelElement> results = new ArrayList<>();
 		try {
 			moduleDeclaration.traverse(new ASTVisitor() {
 				@Override
 				public boolean visit(Expression s) throws Exception {
-					if ((s.sourceStart() <= offset)
-							&& (offset <= s.sourceEnd())) {
+					if ((s.sourceStart() <= offset) && (offset <= s.sourceEnd())) {
 						if (s instanceof MethodCallExpression) {
-							findDeclaration(
-									((MethodCallExpression) s).getName(),
-									results);
+							findDeclaration(((MethodCallExpression) s).getName(), results);
 						}
 						if (s instanceof VariableReference) {
-							findDeclaration(((VariableReference) s).getName(),
-									results);
+							findDeclaration(((VariableReference) s).getName(), results);
 						}
 					}
 					return super.visit(s);
@@ -58,8 +53,7 @@ public class ShelledSelectionEngine extends ScriptSelectionEngine {
 
 				@Override
 				public boolean visit(MethodDeclaration s) throws Exception {
-					if ((s.getNameStart() <= offset)
-							&& (offset <= s.getNameEnd())) {
+					if ((s.getNameStart() <= offset) && (offset <= s.getNameEnd())) {
 						findDeclaration(s.getName(), results);
 					}
 					return super.visit(s);
@@ -74,8 +68,7 @@ public class ShelledSelectionEngine extends ScriptSelectionEngine {
 		return results.toArray(new IModelElement[results.size()]);
 	}
 
-	private void findDeclaration(final String name,
-			final List<IModelElement> results) {
+	private void findDeclaration(final String name, final List<IModelElement> results) {
 		try {
 			this.sourceModule.accept(new IModelElementVisitor() {
 				@Override

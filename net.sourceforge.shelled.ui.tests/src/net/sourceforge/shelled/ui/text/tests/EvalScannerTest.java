@@ -8,14 +8,15 @@
 package net.sourceforge.shelled.ui.text.tests;
 
 import static org.junit.Assert.assertEquals;
-import net.sourceforge.shelled.ui.Activator;
-import net.sourceforge.shelled.ui.IShellColorConstants;
-import net.sourceforge.shelled.ui.text.EvalScanner;
 
 import org.eclipse.jface.text.TextAttribute;
 import org.eclipse.jface.text.rules.IToken;
 import org.eclipse.jface.text.rules.RuleBasedScanner;
 import org.junit.Test;
+
+import net.sourceforge.shelled.ui.Activator;
+import net.sourceforge.shelled.ui.IShellColorConstants;
+import net.sourceforge.shelled.ui.text.EvalScanner;
 
 /**
  * Test the scanner for command substitution partitions.
@@ -42,8 +43,7 @@ public class EvalScannerTest extends AbstractScannerTester {
 		assertEquals(5, scanner.getTokenLength());
 		assertEquals(0, scanner.getTokenOffset());
 		TextAttribute ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_VARIABLE));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_VARIABLE));
 	}
 
 	/**
@@ -56,8 +56,7 @@ public class EvalScannerTest extends AbstractScannerTester {
 		assertEquals(16, scanner.getTokenLength());
 		assertEquals(17, scanner.getTokenOffset());
 		TextAttribute ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_VARIABLE));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_VARIABLE));
 	}
 
 	/**
@@ -70,7 +69,6 @@ public class EvalScannerTest extends AbstractScannerTester {
 		assertEquals(1, scanner.getTokenLength());
 		assertEquals(6, scanner.getTokenOffset());
 		TextAttribute ta = (TextAttribute) token.getData();
-		assertEquals(ta.getForeground(),
-				cm.getColor(IShellColorConstants.SHELL_EVAL));
+		assertEquals(ta.getForeground(), cm.getColor(IShellColorConstants.SHELL_EVAL));
 	}
 }

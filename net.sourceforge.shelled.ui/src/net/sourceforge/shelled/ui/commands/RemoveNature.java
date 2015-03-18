@@ -10,11 +10,11 @@ package net.sourceforge.shelled.ui.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.shelled.core.ShelledNature;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
+
+import net.sourceforge.shelled.core.ShelledNature;
 
 /**
  * Implementation of the project handler that removes the ShellEd nature from a
@@ -38,8 +38,7 @@ public class RemoveNature extends AbstractProjectHandler {
 			}
 
 			// Set the project description
-			description.setNatureIds(newNatures.toArray(new String[newNatures
-					.size()]));
+			description.setNatureIds(newNatures.toArray(new String[newNatures.size()]));
 			project.setDescription(description, null);
 		} catch (CoreException e) {
 			e.printStackTrace();

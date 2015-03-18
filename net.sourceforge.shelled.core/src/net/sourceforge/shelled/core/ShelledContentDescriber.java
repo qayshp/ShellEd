@@ -16,8 +16,7 @@ import org.eclipse.dltk.core.ScriptContentDescriber;
 
 public class ShelledContentDescriber extends ScriptContentDescriber {
 
-	protected static Pattern[] header_patterns = { Pattern.compile("^#!.*sh.*",
-			Pattern.MULTILINE) };
+	protected static Pattern[] header_patterns = { Pattern.compile("^#!.*sh.*", Pattern.MULTILINE) };
 
 	@Override
 	protected Pattern[] getHeaderPatterns() {

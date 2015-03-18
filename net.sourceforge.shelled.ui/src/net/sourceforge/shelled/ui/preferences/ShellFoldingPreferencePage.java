@@ -10,10 +10,6 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.preferences;
 
-import net.sourceforge.shelled.ui.Activator;
-import net.sourceforge.shelled.ui.text.folding.ShellCodeFoldingPreferenceBlock;
-import net.sourceforge.shelled.ui.text.folding.ShellCommentFoldingPreferenceBlock;
-
 import org.eclipse.dltk.ui.preferences.AbstractConfigurationBlockPreferencePage;
 import org.eclipse.dltk.ui.preferences.IPreferenceConfigurationBlock;
 import org.eclipse.dltk.ui.preferences.OverlayPreferenceStore;
@@ -21,11 +17,14 @@ import org.eclipse.dltk.ui.text.folding.DefaultFoldingPreferenceConfigurationBlo
 import org.eclipse.dltk.ui.text.folding.IFoldingPreferenceBlock;
 import org.eclipse.jface.preference.PreferencePage;
 
+import net.sourceforge.shelled.ui.Activator;
+import net.sourceforge.shelled.ui.text.folding.ShellCodeFoldingPreferenceBlock;
+import net.sourceforge.shelled.ui.text.folding.ShellCommentFoldingPreferenceBlock;
+
 /**
  * A couple of usual folding options.
  */
-public class ShellFoldingPreferencePage extends
-		AbstractConfigurationBlockPreferencePage {
+public class ShellFoldingPreferencePage extends AbstractConfigurationBlockPreferencePage {
 	@Override
 	protected String getHelpId() {
 		return null;
@@ -41,19 +40,16 @@ public class ShellFoldingPreferencePage extends
 	}
 
 	@Override
-	protected IPreferenceConfigurationBlock createConfigurationBlock(
-			OverlayPreferenceStore overlayPreferenceStore) {
-		return new DefaultFoldingPreferenceConfigurationBlock(
-				overlayPreferenceStore, this) {
+	protected IPreferenceConfigurationBlock createConfigurationBlock(OverlayPreferenceStore overlayPreferenceStore) {
+		return new DefaultFoldingPreferenceConfigurationBlock(overlayPreferenceStore, this) {
 			@Override
-			protected IFoldingPreferenceBlock createDocumentationBlock(
-					OverlayPreferenceStore store, PreferencePage page) {
+			protected IFoldingPreferenceBlock createDocumentationBlock(OverlayPreferenceStore store,
+					PreferencePage page) {
 				return new ShellCommentFoldingPreferenceBlock(store, page);
 			}
 
 			@Override
-			protected IFoldingPreferenceBlock createSourceCodeBlock(
-					OverlayPreferenceStore store, PreferencePage page) {
+			protected IFoldingPreferenceBlock createSourceCodeBlock(OverlayPreferenceStore store, PreferencePage page) {
 				return new ShellCodeFoldingPreferenceBlock(store, page);
 			}
 		};

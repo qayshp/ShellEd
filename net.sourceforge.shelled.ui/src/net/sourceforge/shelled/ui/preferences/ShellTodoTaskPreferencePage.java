@@ -10,9 +10,6 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.preferences;
 
-import net.sourceforge.shelled.core.ShelledNature;
-import net.sourceforge.shelled.ui.Activator;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.dltk.ui.preferences.AbstractConfigurationBlockPropertyAndPreferencePage;
 import org.eclipse.dltk.ui.preferences.AbstractOptionsBlock;
@@ -20,8 +17,10 @@ import org.eclipse.dltk.ui.preferences.TodoTaskOptionsBlock;
 import org.eclipse.dltk.ui.util.IStatusChangeListener;
 import org.eclipse.ui.preferences.IWorkbenchPreferenceContainer;
 
-public class ShellTodoTaskPreferencePage extends
-		AbstractConfigurationBlockPropertyAndPreferencePage {
+import net.sourceforge.shelled.core.ShelledNature;
+import net.sourceforge.shelled.ui.Activator;
+
+public class ShellTodoTaskPreferencePage extends AbstractConfigurationBlockPropertyAndPreferencePage {
 
 	@Override
 	protected String getHelpId() {
@@ -34,11 +33,9 @@ public class ShellTodoTaskPreferencePage extends
 	}
 
 	@Override
-	protected AbstractOptionsBlock createOptionsBlock(
-			IStatusChangeListener newStatusChangedListener, IProject project,
+	protected AbstractOptionsBlock createOptionsBlock(IStatusChangeListener newStatusChangedListener, IProject project,
 			IWorkbenchPreferenceContainer container) {
-		return new TodoTaskOptionsBlock(newStatusChangedListener, project,
-				container, Activator.PLUGIN_ID);
+		return new TodoTaskOptionsBlock(newStatusChangedListener, project, container, Activator.PLUGIN_ID);
 	}
 
 	@Override

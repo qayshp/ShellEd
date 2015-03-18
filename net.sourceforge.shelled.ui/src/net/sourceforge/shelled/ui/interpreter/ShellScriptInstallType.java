@@ -10,9 +10,6 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.interpreter;
 
-import net.sourceforge.shelled.core.ShelledNature;
-import net.sourceforge.shelled.ui.Activator;
-
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -23,9 +20,11 @@ import org.eclipse.dltk.launching.EnvironmentVariable;
 import org.eclipse.dltk.launching.IInterpreterInstall;
 import org.eclipse.dltk.launching.LibraryLocation;
 
+import net.sourceforge.shelled.core.ShelledNature;
+import net.sourceforge.shelled.ui.Activator;
+
 public class ShellScriptInstallType extends AbstractInterpreterInstallType {
-	private static final String[] INTERPRETER_NAMES = { "sh", "bash", "zsh",
-		"dash", "ksh", "tcsh", "csh" };
+	private static final String[] INTERPRETER_NAMES = { "sh", "bash", "zsh", "dash", "ksh", "tcsh", "csh" };
 
 	@Override
 	protected IPath createPathFile(IDeployment deployment) {
@@ -33,9 +32,8 @@ public class ShellScriptInstallType extends AbstractInterpreterInstallType {
 	}
 
 	@Override
-	public synchronized LibraryLocation[] getDefaultLibraryLocations(
-			IFileHandle installLocation, EnvironmentVariable[] variables,
-			IProgressMonitor monitor) {
+	public synchronized LibraryLocation[] getDefaultLibraryLocations(IFileHandle installLocation,
+			EnvironmentVariable[] variables, IProgressMonitor monitor) {
 		return new LibraryLocation[0];
 	}
 

@@ -28,36 +28,29 @@ public class ShellPartitionScanner extends RuleBasedPartitionScanner {
 
 		List<IRule> rules = new ArrayList<>();
 		// Add rule for single line comments.
-		rules.add(new EndOfLineRule("#!", new Token(
-				IShellPartitions.HASHBANG_CONTENT_TYPE)));
+		rules.add(new EndOfLineRule("#!", new Token(IShellPartitions.HASHBANG_CONTENT_TYPE)));
 		/*
 		 * There are 2 comment rules in order to correctly support # in
 		 * variables.
 		 */
 		// This rule recognizes only comments starting from the beginning of
 		// line.
-		EndOfLineRule commentRule = new EndOfLineRule("#", new Token(
-				IShellPartitions.COMMENT_CONTENT_TYPE));
+		EndOfLineRule commentRule = new EndOfLineRule("#", new Token(IShellPartitions.COMMENT_CONTENT_TYPE));
 		commentRule.setColumnConstraint(0);
 		rules.add(commentRule);
 		// This rule recognizes only comments which has space in front of it
-		commentRule = new EndOfLineRule(" #", new Token(
-				IShellPartitions.COMMENT_CONTENT_TYPE));
+		commentRule = new EndOfLineRule(" #", new Token(IShellPartitions.COMMENT_CONTENT_TYPE));
 		rules.add(commentRule);
-		commentRule = new EndOfLineRule("\t#", new Token(
-				IShellPartitions.COMMENT_CONTENT_TYPE));
+		commentRule = new EndOfLineRule("\t#", new Token(IShellPartitions.COMMENT_CONTENT_TYPE));
 		rules.add(commentRule);
 
-		rules.add(new DollarBraceCountingRule('(', ')', new Token(
-				IShellPartitions.EVAL_CONTENT_TYPE), '\\'));
-		rules.add(new DollarBraceCountingRule('{', '}', new Token(
-				IShellPartitions.PARAM_CONTENT_TYPE), '\\'));
-		rules.add(new SingleLineRule("`", "`", new Token(
-				IShellPartitions.EVAL_CONTENT_TYPE), '\\', false, true));
-		rules.add(new SingleLineRule("\"", "\"", new Token(
-				IShellPartitions.DOUBLE_QUOTE_CONTENT_TYPE), '\\', false, true));
-		rules.add(new SingleLineRule("'", "'", new Token(
-				IShellPartitions.SINGLE_QUOTE_CONTENT_TYPE), '\\', false, true));
+		rules.add(new DollarBraceCountingRule('(', ')', new Token(IShellPartitions.EVAL_CONTENT_TYPE), '\\'));
+		rules.add(new DollarBraceCountingRule('{', '}', new Token(IShellPartitions.PARAM_CONTENT_TYPE), '\\'));
+		rules.add(new SingleLineRule("`", "`", new Token(IShellPartitions.EVAL_CONTENT_TYPE), '\\', false, true));
+		rules.add(new SingleLineRule("\"", "\"", new Token(IShellPartitions.DOUBLE_QUOTE_CONTENT_TYPE), '\\', false,
+				true));
+		rules.add(
+				new SingleLineRule("'", "'", new Token(IShellPartitions.SINGLE_QUOTE_CONTENT_TYPE), '\\', false, true));
 
 		IPredicateRule[] result = new IPredicateRule[rules.size()];
 		rules.toArray(result);

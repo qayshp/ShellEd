@@ -21,13 +21,11 @@ public class ShellDocumentationProvider implements IScriptDocumentationProvider 
 
 	@Override
 	public Reader getInfo(String content) {
-		return new StringReader(new ManPage(content).getStrippedHtmlPage()
-				.toString());
+		return new StringReader(new ManPage(content).getStrippedHtmlPage().toString());
 	}
 
 	@Override
-	public Reader getInfo(IMember element, boolean lookIntoParents,
-			boolean lookIntoExternal) {
+	public Reader getInfo(IMember element, boolean lookIntoParents, boolean lookIntoExternal) {
 		// TODO show comments for functions if there is any
 		return null;
 	}

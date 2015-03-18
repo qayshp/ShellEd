@@ -10,8 +10,6 @@
  *******************************************************************************/
 package net.sourceforge.shelled.ui.preferences;
 
-import net.sourceforge.shelled.ui.editor.ShellSourceViewerConfiguration;
-
 import org.eclipse.dltk.ui.text.IColorManager;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.IAutoEditStrategy;
@@ -24,21 +22,20 @@ import org.eclipse.jface.text.source.IAnnotationHover;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-public class SimpleShellSourceViewerConfiguration extends
-ShellSourceViewerConfiguration {
+import net.sourceforge.shelled.ui.editor.ShellSourceViewerConfiguration;
+
+public class SimpleShellSourceViewerConfiguration extends ShellSourceViewerConfiguration {
 
 	private final boolean changeFormatter;
 
-	public SimpleShellSourceViewerConfiguration(IColorManager colorManager,
-			IPreferenceStore preferenceStore, ITextEditor editor,
-			String partitioning, boolean changeFormatter) {
+	public SimpleShellSourceViewerConfiguration(IColorManager colorManager, IPreferenceStore preferenceStore,
+			ITextEditor editor, String partitioning, boolean changeFormatter) {
 		super(colorManager, preferenceStore, editor, partitioning);
 		this.changeFormatter = changeFormatter;
 	}
 
 	@Override
-	public IAutoEditStrategy[] getAutoEditStrategies(
-			ISourceViewer sourceViewer, String contentType) {
+	public IAutoEditStrategy[] getAutoEditStrategies(ISourceViewer sourceViewer, String contentType) {
 		return null;
 	}
 
@@ -48,26 +45,22 @@ ShellSourceViewerConfiguration {
 	}
 
 	@Override
-	public IAnnotationHover getOverviewRulerAnnotationHover(
-			ISourceViewer sourceViewer) {
+	public IAnnotationHover getOverviewRulerAnnotationHover(ISourceViewer sourceViewer) {
 		return null;
 	}
 
 	@Override
-	public int[] getConfiguredTextHoverStateMasks(ISourceViewer sourceViewer,
-			String contentType) {
+	public int[] getConfiguredTextHoverStateMasks(ISourceViewer sourceViewer, String contentType) {
 		return null;
 	}
 
 	@Override
-	public ITextHover getTextHover(ISourceViewer sourceViewer,
-			String contentType, int stateMask) {
+	public ITextHover getTextHover(ISourceViewer sourceViewer, String contentType, int stateMask) {
 		return null;
 	}
 
 	@Override
-	public ITextHover getTextHover(ISourceViewer sourceViewer,
-			String contentType) {
+	public ITextHover getTextHover(ISourceViewer sourceViewer, String contentType) {
 		return null;
 	}
 
@@ -80,20 +73,17 @@ ShellSourceViewerConfiguration {
 	}
 
 	@Override
-	public IInformationControlCreator getInformationControlCreator(
-			ISourceViewer sourceViewer) {
+	public IInformationControlCreator getInformationControlCreator(ISourceViewer sourceViewer) {
 		return null;
 	}
 
 	@Override
-	public IInformationPresenter getInformationPresenter(
-			ISourceViewer sourceViewer) {
+	public IInformationPresenter getInformationPresenter(ISourceViewer sourceViewer) {
 		return null;
 	}
 
 	@Override
-	public IInformationPresenter getOutlinePresenter(
-			ISourceViewer sourceViewer, boolean doCodeResolve) {
+	public IInformationPresenter getOutlinePresenter(ISourceViewer sourceViewer, boolean doCodeResolve) {
 		return null;
 	}
 
