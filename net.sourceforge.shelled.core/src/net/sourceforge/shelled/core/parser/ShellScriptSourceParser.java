@@ -32,11 +32,9 @@ import org.eclipse.dltk.compiler.problem.IProblemReporter;
 
 public class ShellScriptSourceParser extends AbstractSourceParser {
 
-	private static ShellModel parse(StringReader reader,
-			ShellModuleDeclaration moduleDeclaration) {
+	private static ShellModel parse(StringReader reader, ShellModuleDeclaration moduleDeclaration) {
 		ShellModel model = new ShellModel();
 
-		BufferedReader bReader = new BufferedReader(reader);
 		String line;
 		int lineStart = 0;
 		int commentLength = 0;
@@ -46,7 +44,7 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 		Stack<Declaration> tmp = new Stack<>();
 		boolean isPrevLnContinued = false;
 
-		try {
+		try (BufferedReader bReader = new BufferedReader(reader)) {
 			while ((line = bReader.readLine()) != null) {
 				if (line.trim().length() == 0 || line.trim().charAt(0) == '#') {
 					lineStart += line.length() + 1;
@@ -57,32 +55,23 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 					line = line.substring(0, line.indexOf('#'));
 				}
 				if (line.contains("()")) {
-					int lBracket = line.indexOf('{') == -1 ? 0 : line
-							.indexOf('{');
-					int fPlusEight = line.indexOf("function") == -1 ? 0 : line
-							.indexOf("function") + 8;
-					mDeclaration = new MethodDeclaration(line.substring(
-							fPlusEight, line.indexOf('(')).trim(), lineStart,
-							lineStart + line.length() - 1,
-							lBracket + lineStart, lBracket + lineStart);
-					functionNames.add(line.substring(fPlusEight,
-							line.indexOf('(')).trim());
+					int lBracket = line.indexOf('{') == -1 ? 0 : line.indexOf('{');
+					int fPlusEight = line.indexOf("function") == -1 ? 0 : line.indexOf("function") + 8;
+					mDeclaration = new MethodDeclaration(line.substring(fPlusEight, line.indexOf('(')).trim(),
+							lineStart, lineStart + line.length() - 1, lBracket + lineStart, lBracket + lineStart);
+					functionNames.add(line.substring(fPlusEight, line.indexOf('(')).trim());
 					tmp.push(mDeclaration);
 					model.addFunction(mDeclaration);
 				} else if (line.contains("function ")) {
 					int fPlusEight = line.indexOf("function") + 8;
-					int lBracket = line.indexOf('{') == -1 ? line.length()
-							: line.indexOf('{') - 1;
+					int lBracket = line.indexOf('{') == -1 ? line.length() : line.indexOf('{') - 1;
 					if (fPlusEight >= line.length())
 						continue;
 					if (fPlusEight > lBracket)
 						continue;
-					mDeclaration = new MethodDeclaration(line.substring(
-							fPlusEight, lBracket).trim(), lineStart, lineStart
-							+ line.length() - 1, lBracket + lineStart, lBracket
-							+ lineStart);
-					functionNames.add(line.substring(fPlusEight, lBracket)
-							.trim());
+					mDeclaration = new MethodDeclaration(line.substring(fPlusEight, lBracket).trim(), lineStart,
+							lineStart + line.length() - 1, lBracket + lineStart, lBracket + lineStart);
+					functionNames.add(line.substring(fPlusEight, lBracket).trim());
 					tmp.push(mDeclaration);
 					model.addFunction(mDeclaration);
 				} else if (line.trim().equals("}")) {
@@ -96,14 +85,10 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 				Pattern assignmentPattern = Pattern.compile("(^|\\W)\\w*=");
 				Matcher matcher = assignmentPattern.matcher(line);
 				if (matcher.find()) {
-					String varName = line.substring(matcher.start(),
-							matcher.end() - 1);
+					String varName = line.substring(matcher.start(), matcher.end() - 1);
 					if (isValidName(varName)) {
-						FieldDeclaration variable = new FieldDeclaration(
-								varName, lineStart + matcher.start(), lineStart
-										+ matcher.end(), lineStart
-										+ matcher.start(), lineStart
-										+ matcher.end());
+						FieldDeclaration variable = new FieldDeclaration(varName, lineStart + matcher.start(),
+								lineStart + matcher.end(), lineStart + matcher.start(), lineStart + matcher.end());
 						varNames.add(varName);
 						model.addVariable(variable);
 					}
@@ -111,11 +96,9 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 
 				// start of if statement
 				if (line.contains("if ") && !line.contains("elif ")) {
-					mDeclaration = new MethodDeclaration(line.substring(0,
-							line.length()).trim(), lineStart
-							+ line.indexOf("if"),
-							lineStart + line.length() - 1, lineStart, lineStart
-									+ line.length());
+					mDeclaration = new MethodDeclaration(line.substring(0, line.length()).trim(),
+							lineStart + line.indexOf("if"), lineStart + line.length() - 1, lineStart,
+							lineStart + line.length());
 					model.addStatement(mDeclaration);
 					tmp.push(mDeclaration);
 
@@ -128,19 +111,17 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 
 					// start of while statement
 				} else if (line.contains("while ")) {
-					mDeclaration = new MethodDeclaration(line.substring(0,
-							line.length()).trim(), lineStart
-							+ line.indexOf("while"), lineStart + line.length()
-							- 1, lineStart, lineStart + line.length());
+					mDeclaration = new MethodDeclaration(line.substring(0, line.length()).trim(),
+							lineStart + line.indexOf("while"), lineStart + line.length() - 1, lineStart,
+							lineStart + line.length());
 					model.addStatement(mDeclaration);
 					tmp.push(mDeclaration);
 
 					// start of until statement
 				} else if (line.contains("until ")) {
-					mDeclaration = new MethodDeclaration(line.substring(0,
-							line.length()).trim(), lineStart
-							+ line.indexOf("until"), lineStart + line.length()
-							- 1, lineStart, lineStart + line.length());
+					mDeclaration = new MethodDeclaration(line.substring(0, line.length()).trim(),
+							lineStart + line.indexOf("until"), lineStart + line.length() - 1, lineStart,
+							lineStart + line.length());
 					model.addStatement(mDeclaration);
 					tmp.push(mDeclaration);
 
@@ -153,19 +134,17 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 
 					// start of for statement
 				} else if (line.contains("for ")) {
-					mDeclaration = new MethodDeclaration(line.substring(0,
-							line.length()).trim(), lineStart
-							+ line.indexOf("for"), lineStart + line.length()
-							- 1, lineStart, lineStart + line.length());
+					mDeclaration = new MethodDeclaration(line.substring(0, line.length()).trim(),
+							lineStart + line.indexOf("for"), lineStart + line.length() - 1, lineStart,
+							lineStart + line.length());
 					model.addStatement(mDeclaration);
 					tmp.push(mDeclaration);
 
 					// start of case statement
 				} else if (line.contains("case ")) {
-					mDeclaration = new MethodDeclaration(line.substring(0,
-							line.length()).trim(), lineStart
-							+ line.indexOf("case"), lineStart + line.length()
-							- 1, lineStart, lineStart + line.length());
+					mDeclaration = new MethodDeclaration(line.substring(0, line.length()).trim(),
+							lineStart + line.indexOf("case"), lineStart + line.length() - 1, lineStart,
+							lineStart + line.length());
 					model.addStatement(mDeclaration);
 					tmp.push(mDeclaration);
 
@@ -178,18 +157,14 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 				}
 
 				// multi-line commands and literals
-				if (line.charAt(line.length() - 1) == '\\'
-						&& !isPrevLnContinued) {
+				if (line.charAt(line.length() - 1) == '\\' && !isPrevLnContinued) {
 					isPrevLnContinued = true;
-					mDeclaration = new MethodDeclaration(line.substring(0,
-							line.length()).trim(), lineStart
-							+ line.indexOf("\\"),
-							lineStart + line.length() - 1, lineStart, lineStart
-									+ line.length());
+					mDeclaration = new MethodDeclaration(line.substring(0, line.length()).trim(),
+							lineStart + line.indexOf("\\"), lineStart + line.length() - 1, lineStart,
+							lineStart + line.length());
 					tmp.push(mDeclaration);
 					model.addStatement(mDeclaration);
-				} else if (line.charAt(line.length() - 1) == '\\'
-						&& isPrevLnContinued) {
+				} else if (line.charAt(line.length() - 1) == '\\' && isPrevLnContinued) {
 					if (!tmp.isEmpty()) {
 						mDeclaration = (MethodDeclaration) tmp.pop();
 						mDeclaration.setEnd(lineStart + line.indexOf('\\'));
@@ -205,22 +180,16 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 
 				for (String funcName : functionNames) {
 					if (line.contains(funcName)) {
-						moduleDeclaration
-								.addStatement(new MethodCallExpression(
-										lineStart + line.indexOf(funcName),
-										lineStart + line.indexOf(funcName)
-												+ funcName.length(), null,
-										funcName, null));
+						moduleDeclaration.addStatement(new MethodCallExpression(lineStart + line.indexOf(funcName),
+								lineStart + line.indexOf(funcName) + funcName.length(), null, funcName, null));
 					}
 				}
 				for (String varName : varNames) {
-					Pattern varRefPattern = Pattern.compile("(^|\\W)\\$\\b"
-							+ varName + "\\b");
+					Pattern varRefPattern = Pattern.compile("(^|\\W)\\$\\b" + varName + "\\b");
 					Matcher varRefMatcher = varRefPattern.matcher(line);
 					while (varRefMatcher.find()) {
-						moduleDeclaration.addStatement(new VariableReference(
-								lineStart + varRefMatcher.start(), lineStart
-										+ varRefMatcher.end(), varName));
+						moduleDeclaration.addStatement(new VariableReference(lineStart + varRefMatcher.start(),
+								lineStart + varRefMatcher.end(), varName));
 					}
 				}
 
@@ -241,8 +210,7 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 		return false;
 	}
 
-	private static void processNode(ShellModel parse,
-			ModuleDeclaration moduleDeclaration) {
+	private static void processNode(ShellModel parse, ModuleDeclaration moduleDeclaration) {
 		for (MethodDeclaration functionNode : parse.getFunctions()) {
 			moduleDeclaration.addStatement(functionNode);
 		}
@@ -256,11 +224,9 @@ public class ShellScriptSourceParser extends AbstractSourceParser {
 
 	@Override
 	public IModuleDeclaration parse(IModuleSource source, IProblemReporter arg1) {
-		ShellModuleDeclaration moduleDeclaration = new ShellModuleDeclaration(
-				source.getSourceContents().length());
+		ShellModuleDeclaration moduleDeclaration = new ShellModuleDeclaration(source.getSourceContents().length());
 
-		ShellModel shellModel = parse(
-				new StringReader(source.getSourceContents()), moduleDeclaration);
+		ShellModel shellModel = parse(new StringReader(source.getSourceContents()), moduleDeclaration);
 		moduleDeclaration.setFunctions(shellModel.getFunctions());
 		moduleDeclaration.setVariables(shellModel.getVariables());
 		processNode(shellModel, moduleDeclaration);
