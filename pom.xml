@@ -39,7 +39,7 @@
     <url>http://shelled.svn.sourceforge.net/viewvc/shelled/</url>
   </scm>
   <properties>
-    <tycho-version>0.22.0</tycho-version>
+    <tycho-version>0.23.0</tycho-version>
   </properties>
   <modules>
     <module>net.sourceforge.shelled.core</module>
