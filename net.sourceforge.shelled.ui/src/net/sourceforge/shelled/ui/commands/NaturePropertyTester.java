@@ -26,7 +26,7 @@ public class NaturePropertyTester extends PropertyTester {
 
 	@Override
 	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
-		IResource resource = (IResource) ((IAdaptable) receiver).getAdapter(IResource.class);
+		IResource resource = ((IAdaptable) receiver).getAdapter(IResource.class);
 		if (resource == null) {
 			return false;
 		}
