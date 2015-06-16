@@ -54,7 +54,7 @@ public class DollarRule implements IRule {
 	 *            a character to test
 	 * @return true if the specified character is a special parameter
 	 */
-	protected boolean isSpecial(char c) {
+	private static boolean isSpecial(char c) {
 		return ((c == '*') || (c == '@') || (c == '#') || (c == '?') || (c == '-') || (c == '$') || (c == '!')
 				|| (c == '_') || Character.isDigit(c));
 	}

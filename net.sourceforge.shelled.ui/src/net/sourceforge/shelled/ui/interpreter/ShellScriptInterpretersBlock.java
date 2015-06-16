@@ -24,9 +24,7 @@ public class ShellScriptInterpretersBlock extends InterpretersBlock {
 			IInterpreterInstall standin) {
 		AddShellScriptInterpreterDialog dialog = new AddShellScriptInterpreterDialog(this, getShell(),
 				ScriptRuntime.getInterpreterInstallTypes(getCurrentNature()), standin);
-		if (dialog != null) {
-			dialog.setEnvironment(environment);
-		}
+		dialog.setEnvironment(environment);
 		return dialog;
 	}
 
