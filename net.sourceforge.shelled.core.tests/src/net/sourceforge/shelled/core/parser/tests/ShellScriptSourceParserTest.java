@@ -18,7 +18,7 @@ import org.junit.Test;
 public class ShellScriptSourceParserTest {
 
 	@Test @Ignore
-	public static void testParse() {
+	public void testParse() {
 		fail("Not yet implemented");
 	}
 
