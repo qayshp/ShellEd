@@ -35,7 +35,7 @@ public class ShellScriptLanguageToolkit extends AbstractLanguageToolkit {
 
 	@Override
 	public String getLanguageContentType() {
-		return "net.sourceforge.shelled.content-type";
+		return "org.eclipse.dltk.sh.content-type";
 	}
 
 }

@@ -7,13 +7,13 @@
 		</language>
 	</extension>
 	<extension point="org.eclipse.ui.newWizards">
-		<category id="net.sourceforge.shelled.category" name="Shell Script">
+		<category id="org.eclipse.dltk.sh.category" name="Shell Script">
 		</category>
 		<wizard
-        category="net.sourceforge.shelled.category"
+        category="org.eclipse.dltk.sh.category"
         class="org.eclipse.dltk.sh.ui.wizards.ShellScriptProjectWizard"
         icon="icons/projectwizard.gif"
-        id="net.sourceforge.shelled.projectwizard"
+        id="org.eclipse.dltk.sh.projectwizard"
         name="Shell Script Project"
         project="true">
      <description>
@@ -21,10 +21,10 @@
      </description>
 		</wizard>
   <wizard
-        category="net.sourceforge.shelled.category"
+        category="org.eclipse.dltk.sh.category"
         class="org.eclipse.dltk.sh.ui.wizards.NewShellScriptFileWizard"
         icon="icons/scriptwizard.gif"
-        id="net.sourceforge.shelled.scriptfilewizard"
+        id="org.eclipse.dltk.sh.scriptfilewizard"
         name="Shell Script"
         project="false">
      <description>
@@ -35,46 +35,46 @@
 	<extension point="org.eclipse.dltk.launching.interpreterInstallTypes">
 		<interpreterInstallType
 			class="org.eclipse.dltk.sh.ui.interpreter.ShellScriptInstallType"
-			id="net.sourceforge.shelled.ui.interpreter.ShellScriptInstallType">
+			id="org.eclipse.dltk.sh.ui.interpreter.ShellScriptInstallType">
 		</interpreterInstallType>
 	</extension>
 	 <extension
         point="org.eclipse.dltk.launching.interpreterInstalls">
      <interpreterInstall
            home="/bin/sh"
-           id="net.sourceforge.shelled.ui.interpreter.default"
-           interpreterInstallType="net.sourceforge.shelled.ui.interpreter.ShellScriptInstallType"
+           id="org.eclipse.dltk.sh.ui.interpreter.default"
+           interpreterInstallType="org.eclipse.dltk.sh.ui.interpreter.ShellScriptInstallType"
            name="/bin/sh">
      </interpreterInstall>
      </extension>
 	<extension point="org.eclipse.ui.preferencePages">
-	<page id="net.sourceforge.shelled.ui.preferences"
+	<page id="org.eclipse.dltk.sh.ui.preferences"
  		name="Shell Script"
     		class="org.eclipse.dltk.sh.ui.MainPreferencePage">
    	</page>
 
 		<page
 			class="org.eclipse.dltk.sh.ui.interpreter.ShellInterpreterPreferencePage"
-			category="net.sourceforge.shelled.ui.preferences" id="net.sourceforge.shelled.ui.preferences.interpreters" name="Interpreters" />
+			category="org.eclipse.dltk.sh.ui.preferences" id="org.eclipse.dltk.sh.ui.preferences.interpreters" name="Interpreters" />
 			<page
-  category="net.sourceforge.shelled.ui.preferences"
+  category="org.eclipse.dltk.sh.ui.preferences"
   class="org.eclipse.dltk.sh.ui.preferences.ShellTodoTaskPreferencePage"
-  id="net.sourceforge.shelled.ui.preferences.TodoTasks"
+  id="org.eclipse.dltk.sh.ui.preferences.TodoTasks"
   name="Task Tags"/>
   <page
-	          category="net.sourceforge.shelled.ui.preferences.editor"
+	          category="org.eclipse.dltk.sh.ui.preferences.editor"
 	          class="org.eclipse.dltk.sh.ui.preferences.ShellSyntaxColoringPreferencePage"
-	          id="net.sourceforge.shelled.ui.syntaxcoloring"
+	          id="org.eclipse.dltk.sh.ui.syntaxcoloring"
 	          name="Syntax coloring"/>
 	<page
-          category="net.sourceforge.shelled.ui.preferences"
+          category="org.eclipse.dltk.sh.ui.preferences"
           class="org.eclipse.dltk.sh.ui.preferences.ShellEditorPreferencesPage"
-          id="net.sourceforge.shelled.ui.preferences.editor"
+          id="org.eclipse.dltk.sh.ui.preferences.editor"
           name="Editor"/>
 		<page
-			category="net.sourceforge.shelled.ui.preferences.editor"
+			category="org.eclipse.dltk.sh.ui.preferences.editor"
 			class="org.eclipse.dltk.sh.ui.preferences.ShellFoldingPreferencePage"
-			id="net.sourceforge.shelled.ui.preferences.folding"
+			id="org.eclipse.dltk.sh.ui.preferences.folding"
 			name="Folding"/>
 	</extension>
 	<extension point="org.eclipse.ui.editors">
@@ -83,9 +83,9 @@
         contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
         default="false"
         icon="icons/script.gif"
-        id="net.sourceforge.shelled.ui.editor"
+        id="org.eclipse.dltk.sh.ui.editor"
         name="Shell Script Editor">
-			<contentTypeBinding contentTypeId="net.sourceforge.shelled.content-type" />
+			<contentTypeBinding contentTypeId="org.eclipse.dltk.sh.content-type" />
 		</editor>
 	</extension>
 	<extension point="org.eclipse.core.runtime.preferences">
@@ -94,21 +94,21 @@
 	</extension>
 	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
 		<launchConfigurationType
-			id="net.sourceforge.shelled.ui.launchConfigurationType1" name="Shell Script"
+			id="org.eclipse.dltk.sh.ui.launchConfigurationType1" name="Shell Script"
 			delegate="org.eclipse.dltk.sh.ui.LaunchConfigurationDelegate"
 			modes="run">
 		</launchConfigurationType>
 	</extension>
 	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
 		<launchConfigurationTypeImage icon="icons/shellapp.gif"
-			configTypeID="net.sourceforge.shelled.ui.launchConfigurationType1"
-			id="net.sourceforge.shelled.ui.launchConfigurationTypeImage.program">
+			configTypeID="org.eclipse.dltk.sh.ui.launchConfigurationType1"
+			id="org.eclipse.dltk.sh.ui.launchConfigurationTypeImage.program">
 		</launchConfigurationTypeImage>
 	</extension>
 
 	<extension point="org.eclipse.debug.ui.launchShortcuts">
 		<shortcut class="org.eclipse.dltk.sh.ui.LaunchShortcut"
-			id="net.sourceforge.shelled.ui.shortcut" label="Shell script" modes="run"
+			id="org.eclipse.dltk.sh.ui.shortcut" label="Shell script" modes="run"
 			icon="icons/shellapp.gif">
 			<contextualLaunch>
 				<enablement>
@@ -130,8 +130,8 @@
 	</extension>
 	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
 		<launchConfigurationTabGroup
-			class="org.eclipse.dltk.sh.ui.interpreter.ShellTabGroup" id="net.sourceforge.shelled.ui.interpreter.ShellTabGroup"
-			type="net.sourceforge.shelled.ui.launchConfigurationType1">
+			class="org.eclipse.dltk.sh.ui.interpreter.ShellTabGroup" id="org.eclipse.dltk.sh.ui.interpreter.ShellTabGroup"
+			type="org.eclipse.dltk.sh.ui.launchConfigurationType1">
 		</launchConfigurationTabGroup>
 	</extension>
 	<extension point="org.eclipse.dltk.core.completionEngine">
@@ -152,7 +152,7 @@
 	<extension point="org.eclipse.search.searchPages">
 		<page canSearchEnclosingProjects="true"
 			class="org.eclipse.dltk.sh.ui.search.ShelledSearchPage" enabled="true"
-			id="net.sourceforge.shelled.ShelledSearchPage" label="Shell Script Search"
+			id="org.eclipse.dltk.sh.ShelledSearchPage" label="Shell Script Search"
 			showScopeSection="true" sizeHint="460,160">
 		</page>
 	</extension>
@@ -173,17 +173,17 @@
   point="org.eclipse.dltk.core.buildParticipant">
   <buildParticipant
     class="org.eclipse.dltk.core.builder.ParserBuildParticipantFactory"
-    id="net.sourceforge.shelled.buildParticipant.parser"
+    id="org.eclipse.dltk.sh.buildParticipant.parser"
     name="Shell build"
     nature="org.eclipse.dltk.sh.core.nature">
   </buildParticipant>
   <buildParticipant
     class="org.eclipse.dltk.sh.ui.ShellTodoParserType"
-    id="net.sourceforge.shelled.todo"
+    id="org.eclipse.dltk.sh.todo"
     name="Shelled"
     nature="org.eclipse.dltk.sh.core.nature">
     <requires
-      id="net.sourceforge.shelled.buildParticipant.parser">
+      id="org.eclipse.dltk.sh.buildParticipant.parser">
     </requires>
   </buildParticipant>
 
@@ -191,36 +191,36 @@
 <extension point="org.eclipse.dltk.ui.scriptDocumentationProviders">
      <provider
            class="org.eclipse.dltk.sh.ui.selection.ShellDocumentationProvider"
-           id="net.sourceforge.shelled.ShellDocumentationProvider"
+           id="org.eclipse.dltk.sh.ShellDocumentationProvider"
            nature="org.eclipse.dltk.sh.core.nature"/>
 </extension>
 	<extension point="org.eclipse.ui.commands">
 		<command name="Run shell" description="run shell script"
-			categoryId="org.eclipse.debug.ui.category.run" id="net.sourceforge.shelled.ui.shortcut">
+			categoryId="org.eclipse.debug.ui.category.run" id="org.eclipse.dltk.sh.ui.shortcut">
 		</command>
 		<command
         defaultHandler="org.eclipse.dltk.sh.ui.commands.ShowManHandler"
         description="Show man page view"
-        id="net.sourceforge.shelled.ui.showman"
+        id="org.eclipse.dltk.sh.ui.showman"
         name="Show man page">
 		</command>
   <command
         defaultHandler="org.eclipse.dltk.sh.ui.commands.AddNature"
         description="Adds the Shell Script nature to these projects"
-        id="net.sourceforge.shelled.ui.addnature"
+        id="org.eclipse.dltk.sh.ui.addnature"
         name="Add Shell Script Support">
   </command>
   <command
         defaultHandler="org.eclipse.dltk.sh.ui.commands.RemoveNature"
         description="Removes the Shell Script nature from these projects"
-        id="net.sourceforge.shelled.ui.removenature"
+        id="org.eclipse.dltk.sh.ui.removenature"
         name="Remove Shell Script Support">
   </command>
 	</extension>
 <extension
       point="org.eclipse.ui.bindings">
    <key
-         commandId="net.sourceforge.shelled.ui.showman"
+         commandId="org.eclipse.dltk.sh.ui.showman"
          contextId="org.eclipse.ui.contexts.window"
          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
          sequence="Alt+M">
@@ -233,7 +233,7 @@
       <menu
             label="ShellEd">
          <command
-               commandId="net.sourceforge.shelled.ui.addnature"
+               commandId="org.eclipse.dltk.sh.ui.addnature"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -244,7 +244,7 @@
                         operator="or">
                      <not>
                         <test
-                              property="net.sourceforge.shelled.ui.naturetester.hasShellEdNature">
+                              property="org.eclipse.dltk.sh.ui.naturetester.hasShellEdNature">
                         </test>
                      </not>
                   </iterate>
@@ -252,7 +252,7 @@
             </visibleWhen>
          </command>
          <command
-               commandId="net.sourceforge.shelled.ui.removenature"
+               commandId="org.eclipse.dltk.sh.ui.removenature"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -262,7 +262,7 @@
                         ifEmpty="false"
                         operator="or">
                      <test
-                           property="net.sourceforge.shelled.ui.naturetester.hasShellEdNature">
+                           property="org.eclipse.dltk.sh.ui.naturetester.hasShellEdNature">
                      </test>
                   </iterate>
                </with>
@@ -293,8 +293,8 @@
       point="org.eclipse.core.expressions.propertyTesters">
    <propertyTester
          class="org.eclipse.dltk.sh.ui.commands.NaturePropertyTester"
-         id="net.sourceforge.shelled.ui.naturetester"
-         namespace="net.sourceforge.shelled.ui.naturetester"
+         id="org.eclipse.dltk.sh.ui.naturetester"
+         namespace="org.eclipse.dltk.sh.ui.naturetester"
          properties="hasShellEdNature"
          type="org.eclipse.core.runtime.IAdaptable">
    </propertyTester>

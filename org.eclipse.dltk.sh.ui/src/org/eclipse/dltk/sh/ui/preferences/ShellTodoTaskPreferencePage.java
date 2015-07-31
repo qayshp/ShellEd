@@ -54,12 +54,12 @@ public class ShellTodoTaskPreferencePage extends AbstractConfigurationBlockPrope
 
 	@Override
 	protected String getPreferencePageId() {
-		return "net.sourceforge.preferences.todo";
+		return "org.eclipse.dltk.sh.todo";
 	}
 
 	@Override
 	protected String getPropertyPageId() {
-		return "net.sourceforge.preferences.todo";
+		return "org.eclipse.dltk.sh.todo";
 	}
 
 }
