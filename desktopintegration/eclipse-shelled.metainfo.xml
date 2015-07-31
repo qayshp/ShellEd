@@ -7,6 +7,6 @@
  <name>ShellEd</name>
  <summary>A shell script editor plug-in for Eclipse</summary>
  <extends>eclipse.desktop</extends>
- <url type="homepage">http://sourceforge.net/projects/shelled/</url>
+ <url type="homepage">http://eclipse.org/dltk</url>
  <updatecontact>mat.booth@redhat.com</updatecontact>
 </component>
