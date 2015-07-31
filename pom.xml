@@ -15,8 +15,8 @@
   <prerequisites>
     <maven>3.1.1</maven>
   </prerequisites>
-  <groupId>net.sourceforge.shelled</groupId>
-  <artifactId>shelled</artifactId>
+  <groupId>org.eclipse.dltk.sh</groupId>
+  <artifactId>parent</artifactId>
   <version>2.0.4-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>ShellEd</name>
@@ -33,23 +33,18 @@
       </comments>
     </license>
   </licenses>
-  <scm>
-    <connection>scm:svn:http://shelled.svn.sourceforge.net/svnroot/shelled/trunk</connection>
-    <developerConnection>scm:svn:https://shelled.svn.sourceforge.net/svnroot/shelled/trunk</developerConnection>
-    <url>http://shelled.svn.sourceforge.net/viewvc/shelled/</url>
-  </scm>
   <properties>
-    <tycho-version>0.23.0</tycho-version>
+    <tycho-version>0.23.1</tycho-version>
   </properties>
   <modules>
-    <module>net.sourceforge.shelled.core</module>
-    <module>net.sourceforge.shelled.ui</module>
-    <module>net.sourceforge.shelled.core.tests</module>
-    <module>net.sourceforge.shelled.ui.tests</module>
-    <module>net.sourceforge.shelled.doc</module>
-    <module>net.sourceforge.shelled-feature</module>
-    <module>net.sourceforge.shelled-site</module>
-    <module>net.sourceforge.shelled.target</module>
+    <module>org.eclipse.dltk.sh.core</module>
+    <module>org.eclipse.dltk.sh.ui</module>
+    <module>org.eclipse.dltk.sh.core.tests</module>
+    <module>org.eclipse.dltk.sh.ui.tests</module>
+    <module>org.eclipse.dltk.sh.doc</module>
+    <module>org.eclipse.dltk.sh.feature</module>
+    <module>org.eclipse.dltk.sh.site</module>
+    <module>org.eclipse.dltk.sh.target</module>
   </modules>
   <build>
     <extensions>
@@ -101,8 +96,8 @@
           </environments>
           <target>
             <artifact>
-              <groupId>net.sourceforge.shelled</groupId>
-              <artifactId>net.sourceforge.shelled.target</artifactId>
+              <groupId>org.eclipse.dltk.sh</groupId>
+              <artifactId>org.eclipse.dltk.sh.target</artifactId>
               <version>${project.version}</version>
             </artifact>
           </target>
@@ -158,16 +153,5 @@
       </plugins>
     </pluginManagement>
   </build>
-  <url>https://sourceforge.net/projects/shelled/</url>
   <description>A superb shell script editor for Eclipse.</description>
-  <issueManagement>
-    <system>trac</system>
-    <url>https://sourceforge.net/apps/trac/shelled/</url>
-  </issueManagement>
-  <distributionManagement>
-    <site>
-      <id>shelled.sf.net</id>
-      <url>scp://shell.sourceforge.net/home/project-web/shelled/htdocs</url>
-    </site>
-  </distributionManagement>
 </project>

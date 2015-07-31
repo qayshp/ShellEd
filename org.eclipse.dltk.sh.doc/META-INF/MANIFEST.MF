@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ShellEd Documentation Plug-in
+Bundle-SymbolicName: org.eclipse.dltk.sh.doc;singleton:=true
+Bundle-Version: 2.0.4.qualifier
+Bundle-Vendor: SourceForge
+Require-Bundle: org.eclipse.help
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description>
+      ShellEd p2 repo.
+   </description>
+   <feature url="features/org.eclipse.dltk.sh.feature_0.0.0.qualifier.jar" id="org.eclipse.dltk.sh.feature" version="0.0.0">
+      <category name="Shell Script"/>
+   </feature>
+   <category-def name="Shell Script" label="Shell Script">
+      <description>
+         Shell Script
+      </description>
+   </category-def>
+</site>
