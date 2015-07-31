@@ -9,5 +9,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.dltk.core;bundle-version="[4.0.0,6.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: net.sourceforge.shelled.core,
- net.sourceforge.shelled.core.parser
+Export-Package: org.eclipse.dltk.sh.core,
+ org.eclipse.dltk.sh.core.parser

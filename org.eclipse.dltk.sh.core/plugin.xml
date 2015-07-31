@@ -3,13 +3,13 @@
 <plugin>
 <extension id="nature" point="org.eclipse.core.resources.natures">
       <runtime>
-         <run class="net.sourceforge.shelled.core.ShelledNature"/>
+         <run class="org.eclipse.dltk.sh.core.ShelledNature"/>
       </runtime>
    </extension>
    <extension point="org.eclipse.core.contenttype.contentTypes">
       <content-type
             base-type="org.eclipse.core.runtime.text"
-            describer="net.sourceforge.shelled.core.ShelledContentDescriber"
+            describer="org.eclipse.dltk.sh.core.ShelledContentDescriber"
             file-extensions="sh,ash,bsh,bash,csh,ksh,zsh"
             id="net.sourceforge.shelled.content-type"
             name="Shell script content type"
@@ -18,7 +18,7 @@
    </extension>
    <extension point="org.eclipse.dltk.core.language">
       <language
-            class="net.sourceforge.shelled.core.ShellScriptLanguageToolkit"
+            class="org.eclipse.dltk.sh.core.ShellScriptLanguageToolkit"
             nature="net.sourceforge.shelled.core.nature"
             priority="0">
       </language>
@@ -26,7 +26,7 @@
    <extension
          point="org.eclipse.dltk.core.sourceElementParsers">
       <parser
-            class="net.sourceforge.shelled.core.parser.ShelledSourceElementParser"
+            class="org.eclipse.dltk.sh.core.parser.ShelledSourceElementParser"
             nature="net.sourceforge.shelled.core.nature"
             priority="0">
       </parser>
@@ -35,7 +35,7 @@
       <parserContribution
             natureId="net.sourceforge.shelled.core.nature">
          <parser
-               class="net.sourceforge.shelled.core.parser.ShellScriptSourceParserFactory"
+               class="org.eclipse.dltk.sh.core.parser.ShellScriptSourceParserFactory"
                description="Shell Script Source parser"
                id="net.sourceforge.shelled.core.sourceParser"
                name="sourceParser.name"

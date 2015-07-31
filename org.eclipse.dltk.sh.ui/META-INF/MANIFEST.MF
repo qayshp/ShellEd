@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: ShellEd UI Plug-in
 Bundle-SymbolicName: org.eclipse.dltk.sh.ui;singleton:=true
 Bundle-Version: 2.0.4.qualifier
-Bundle-Activator: net.sourceforge.shelled.ui.Activator
+Bundle-Activator: org.eclipse.dltk.sh.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.dltk.ui;bundle-version="[4.0.0,6.0.0)",
@@ -19,6 +19,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.expressions
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: net.sourceforge.shelled.ui,
- net.sourceforge.shelled.ui.text
+Export-Package: org.eclipse.dltk.sh.ui,
+ org.eclipse.dltk.sh.ui.text
 Bundle-Vendor: SourceForge

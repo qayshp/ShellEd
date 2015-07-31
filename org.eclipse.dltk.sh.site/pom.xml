@@ -20,7 +20,7 @@
     <version>2.0.4-SNAPSHOT</version>
   </parent>
 
-  <artifactId>org.eclipse.dltk.site</artifactId>
+  <artifactId>org.eclipse.dltk.sh.site</artifactId>
   <packaging>eclipse-repository</packaging>
 
   <build>
